@@ -1,2 +1,2 @@
-TODO: Escrever "Readme" do projeto
+TODO: Escrever "Readme" do projeto.
 
