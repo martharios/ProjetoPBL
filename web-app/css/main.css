@@ -11,13 +11,14 @@ h1, h2, h3, h4, h5, h6 {
 /* BASE LAYOUT */
 
 html {
-	background-color: #ddd;
-	background-image: -moz-linear-gradient(center top, #aaa, #ddd);
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));
-	background-image: linear-gradient(top, #aaa, #ddd);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');
-	background-repeat: no-repeat;
-	height: 100%;
+
+	/*background-image: -moz-linear-gradient(center top, #aaa, #ddd);*/
+	/*background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(1, #ddd));*/
+	/*background-image: linear-gradient(top, #aaa, #ddd);*/
+	/*filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#aaaaaa', EndColorStr = '#dddddd');*/
+	/*background-repeat: no-repeat;*/
+	background-image: url("../images/back_body.jpg");
+    height: 100%;
 	/* change the box model to exclude the padding from the calculation of 100% height (IE8+) */
 	-webkit-box-sizing: border-box;
 	   -moz-box-sizing: border-box;
@@ -38,8 +39,9 @@ html * {
 
 body {
 	background: #ffffff;
-	color: #333333;
+	color: #d3d3d3;
 	margin: 0 auto;
+    text-align:center;
 	max-width: 960px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 	   -moz-box-shadow: 0 0 0.3em #255b17;
@@ -48,7 +50,8 @@ body {
 }
 
 #grailsLogo {
-	background-color: #abbf78;
+    text-align: left;
+	background-color: rgb(59,89,152);
 }
 
 /* replace with .no-boxshadow body if you have modernizr available */
@@ -108,7 +111,7 @@ img {
 }
 
 .footer {
-	background: #abbf78;
+	background:  rgb(59,89,152);
 	color: #000;
 	clear: both;
 	font-size: 0.8em;
@@ -169,6 +172,10 @@ img {
 
 .nav a:active, .nav a:visited {
 	color: #666666;
+}
+.anoVigente{
+    font-weight: bold;
+    color: #ffffff;
 }
 
 .nav a:focus, .nav a:hover {
