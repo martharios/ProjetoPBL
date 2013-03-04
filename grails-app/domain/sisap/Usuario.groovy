@@ -7,9 +7,15 @@ class Usuario {
     String senha
 
     def beforeValidate() {
-        senha =  senha.encodeAsMD5()
+        if (login && nome){
+            senha =  senha.encodeAsMD5()
+        }
+
     }
 
     static constraints = {
+        login(nullable: false, blank: false)
+        nome(nullable: false, blank: false)
+        senha(nullable: false, blank: false)
     }
 }

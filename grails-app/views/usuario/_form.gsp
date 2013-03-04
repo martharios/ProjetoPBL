@@ -23,6 +23,6 @@
 		<g:message code="usuario.senha.label" default="Senha" />
 		
 	</label>
-	<g:textField name="senha" value="${usuarioInstance?.senha}"/>
+	<g:passwordField name="senha" value="${usuarioInstance?.senha}"/>
 </div>
 

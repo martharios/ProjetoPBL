@@ -17,22 +17,26 @@
         <style type="text/css">
         #status {
             /*background-color: #eee;*/
-            border: .1em solid rgb(59,89,152);
-            margin: 5px 15px 15px;
+            /*border: .1em outset #000000;*/
+            margin: 5px 10px 5px;
             padding: 1em;
             width: 200px;
-            height: 600px;
+            height: 800px;
             float: left;
             color: #000000;
-            /*-moz-box-shadow: 0px 0px 1.25em #ccc;*/
-            /*-webkit-box-shadow: 0px 0px 1.25em #ccc;*/
-            /*box-shadow: 0px 0px 1.25em #ccc;*/
-            /*-moz-border-radius: 0.6em;*/
-            /*-webkit-border-radius: 0.6em;*/
+            -moz-box-shadow: 0px 0px 1.25em #ccc;
+            -webkit-box-shadow: 0px 0px 1.25em #ccc;
+            box-shadow: 0px 0px 1.25em #ccc;
+            -moz-border-radius: 0.6em;
+            -webkit-border-radius: 0.6em;
 
             border-radius: 0.6em;
 
 
+        }
+
+        #status ul li a {
+            display: block;
         }
 
         .ie6 #status {
@@ -61,18 +65,18 @@
         }
         #bodyContent {
             /*background-color: #eee;*/
-            border: .1em solid rgb(59,89,152);
+
             margin: 5px 0px 0px;
             padding: 1em;
-            width: 600px;
-            /*height: 500px;*/
+            width: 670px;
+            height: 800px;
             float: left;
             color: #000000;
-            /*-moz-box-shadow: 0px 0px 1.25em #ccc;*/
-            /*-webkit-box-shadow: 0px 0px 1.25em #ccc;*/
-            /*box-shadow: 0px 0px 1.25em #ccc;*/
-            /*-moz-border-radius: 0.6em;*/
-            /*-webkit-border-radius: 0.6em;*/
+            -moz-box-shadow: 0px 0px 1.25em #ccc;
+            -webkit-box-shadow: 0px 0px 1.25em #ccc;
+            box-shadow: 0px 0px 1.25em #ccc;
+            -moz-border-radius: 0.6em;
+            -webkit-border-radius: 0.6em;
 
             border-radius: 0.6em;
 
@@ -157,7 +161,9 @@
         </div>
         <div class="content">
             <g:render template="/layouts/menu" />
-            <g:layoutBody/>
+            <div id="bodyContent">
+                <g:layoutBody/>
+            </div>
         </div>
 
 		<div class="footer" role="contentinfo"><g:anoVigente /></div>

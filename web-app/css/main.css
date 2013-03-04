@@ -98,6 +98,7 @@ img {
 }
 
 .content {
+    min-height: 800px;
 }
 
 .content h1 {
@@ -335,6 +336,7 @@ fieldset.embedded legend {
 
 .errors,
 .message {
+
 	font-size: 0.8em;
 	line-height: 2;
 	margin: 1em 2em;
@@ -406,9 +408,10 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
 /* TABLES */
 
 table {
-	border-top: 1px solid #DFDFDF;
+	/*border-top: 1px solid #DFDFDF;*/
 	border-collapse: collapse;
 	width: 100%;
+    position: relative;
 	margin-bottom: 1em;
 }
 
@@ -489,6 +492,8 @@ th:hover, tr:hover {
 /* PAGINATION */
 
 .pagination {
+    position: relative;
+    width: 100%;
 	border-top: 0;
 	margin: 0;
 	padding: 0.3em 0.2em;
@@ -502,6 +507,8 @@ th:hover, tr:hover {
 .pagination a,
 .pagination .currentStep {
 	color: #666666;
+    position: relative;
+    width: 100%;
 	display: inline-block;
 	margin: 0 0.1em;
 	padding: 0.25em 0.7em;
@@ -513,6 +520,8 @@ th:hover, tr:hover {
 
 .pagination a:hover, .pagination a:focus,
 .pagination .currentStep {
+    position: relative;
+    width: 100%;
 	background-color: #999999;
 	color: #ffffff;
 	outline: none;
@@ -521,6 +530,7 @@ th:hover, tr:hover {
 
 .no-borderradius .pagination a:hover, .no-borderradius .pagination a:focus,
 .no-borderradius .pagination .currentStep {
+
 	background-color: transparent;
 	color: #444444;
 	text-decoration: underline;

@@ -11,7 +11,6 @@
 	</head>
 	<body>
 
-    <div id="bodyContent">
         <a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
         <div id="page-body" role="main">
@@ -30,7 +29,6 @@
                 </ul>
             </div>
         </div>
-    </div>
 
 	</body>
 </html>
