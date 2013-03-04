@@ -1,8 +1,15 @@
 #Arquivos da IDE
 *.idea
+*.project
+
 
 #Arquivos de implementacao
 *.iml
 
 #Arquivos compilados
-.java
+*.class
+
+#Pasta de arquivos compilados
+target/
+
+
