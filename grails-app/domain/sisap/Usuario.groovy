@@ -11,7 +11,7 @@ class Usuario {
         login(nullable: false, blank: false)
         senha(nullable: false, blank: false)
     }
-    def beforeValidate(){
+    def beforeInsert  = {
         senha = senha.encodeAsMD5()
     }
 }

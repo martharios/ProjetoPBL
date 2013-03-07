@@ -12,6 +12,15 @@
 
 <div class="content" id="container">
 <div class="title"><h5>Cadastrar Usuário</h5></div>
+    <div class="breadCrumbHolder module">
+        <div class="breadCrumb module">
+            <ul>
+                <li class="firstB"><a href="#">Home</a> </li>
+                <li><g:link action="index"> Usuários</g:link></li>
+                <li><g:link action="create">Adicionar Usuários</g:link></li>
+            </ul>
+        </div>
+    </div>
     <g:hasErrors bean="${usuarioInstance}">
         <div class="pt20">
 

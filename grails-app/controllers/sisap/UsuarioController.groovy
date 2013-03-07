@@ -85,6 +85,7 @@ class UsuarioController {
     }
 
     def delete(Long id) {
+        println params
         def usuarioInstance = Usuario.get(id)
         if (!usuarioInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'usuario.label', default: 'Usuario'), id])

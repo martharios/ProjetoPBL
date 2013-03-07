@@ -12,6 +12,15 @@
 
     <div class="content" id="container">
         <div class="title"><h5>Mostrar Usuário</h5></div>
+        <div class="breadCrumbHolder module">
+            <div class="breadCrumb module">
+                <ul>
+                    <li class="firstB"><a href="#">Home</a> </li>
+                    <li><g:link action="index"> Usuários</g:link></li>
+                    <li><g:link action="show" id="${usuarioInstance?.id}">Mostrar Usuários</g:link></li>
+                </ul>
+            </div>
+        </div>
         <g:hasErrors bean="${usuarioInstance}">
             <div class="pt20">
 
@@ -34,10 +43,17 @@
             </div>
         </g:if>
         <div class="middleNav">
+            <g:form method="POST" >
+                <g:hiddenField name="id" value="${usuarioInstance?.id}" />
             <ul>
                 <li class="iMes"><g:link controller="usuario" id="${usuarioInstance?.id}" action="edit"><span>Editar Usuário</span></g:link> </li>
-                <li class="iMes"><g:link controller="usuario" id="${usuarioInstance?.id}" action="delete"><span>Excluir Usuário</span></g:link> </li>
+                <li class="iMes"><g:submitButton name="btnDelete" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"  controller="usuario" id="${usuarioInstance?.id}" action="delete"><span>Excluir Usuário</span></g:submitButton> </li>
+                <li class="iMes"></li>
+                <li class="iMes"><g:link controller="usuario" id="${usuarioInstance?.id}" action="edit"><span><g:submitButton name="btnDelete" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" value="Teste"  controller="usuario" id="${usuarioInstance?.id}" action="delete" /></span></g:link> </li>
+
+                %{--<li class="iMes"><span<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"  /></span></li>--}%
             </ul>
+            </g:form>
         </div>
         <div class="fix"></div>
         <div class="mainForm">

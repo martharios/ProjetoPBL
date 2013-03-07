@@ -11,12 +11,12 @@
 
 <!-- Content -->
 <div class="content">
-<h1>Usuários</h1>
+<div class="title"><h5>Usuários</h5></div>
 <div class="breadCrumbHolder module">
     <div class="breadCrumb module">
         <ul>
             <li class="firstB"><a href="#">Home</a> </li>
-            <li><a href="#">Usuários</a></li>
+            <li><g:link action="index"> Usuários</g:link></li>
 
         </ul>
     </div>
@@ -37,9 +37,9 @@
     <div class="middleNav">
         <ul>
             <li class="iMes"><g:link controller="usuario" action="create"><span>Adicionar Usuário</span></g:link> </li>
-            <li class="iStat"><a href="#" title=""><span>Buscar usuário</span></a></li>
-            <li class="iUser"><a href="#" title=""><span>User list</span></a></li>
-            <li class="iOrders"><a href="#" title=""><span>Billing panel</span></a></li>
+            %{--<li class="iStat"><a href="#" title=""><span>Buscar usuário</span></a></li>--}%
+            %{--<li class="iUser"><a href="#" title=""><span>User list</span></a></li>--}%
+            %{--<li class="iOrders"><a href="#" title=""><span>Billing panel</span></a></li>--}%
         </ul>
     </div>
     <div class="fix"></div>
