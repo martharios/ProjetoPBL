@@ -551,7 +551,7 @@
             </div>
 
             <div class="issueSummary">
-                <a href="#" title="" class="floatleft"><img src="images/user.png" alt="" /></a>
+                <a href="#" title="" class="floatleft"><img src="${createLinkTo(dir: 'images', file: 'user.png')}" alt="" /></a>
                 <div class="ticketInfo">
                     <ul>
                         <li>Current order status:</li>
@@ -573,7 +573,7 @@
             </div>
 
             <div class="issueSummary">
-                <a href="#" title="" class="floatleft"><img src="images/user.png" alt="" /></a>
+                <a href="#" title="" class="floatleft"><img src="${createLinkTo(dir: 'images', file: 'user.png')}" alt="" /></a>
                 <div class="ticketInfo">
                     <ul>
                         <li>Current order status:</li>
@@ -595,7 +595,7 @@
             </div>
 
             <div class="issueSummary">
-                <a href="#" title="" class="floatleft"><img src="images/user.png" alt="" /></a>
+                <a href="#" title="" class="floatleft"><img src="${createLinkTo(dir: 'images', file: 'user.png')}" alt="" /></a>
                 <div class="ticketInfo">
                     <ul>
                         <li>Current order status:</li>
@@ -629,7 +629,7 @@
             </div>
 
             <div class="issueSummary">
-                <a href="#" title="" class="floatleft"><img src="images/user.png" alt="" /></a>
+                <a href="#" title="" class="floatleft"><img src="${createLinkTo(dir: 'images', file: 'user.png')}" alt="" /></a>
                 <div class="ticketInfo">
                     <ul>
                         <li><a href="#" title="">Eugene Kopyov</a></li>
@@ -651,7 +651,7 @@
             </div>
 
             <div class="issueSummary">
-                <a href="#" title="" class="floatleft"><img src="images/user.png" alt="" /></a>
+                <a href="#" title="" class="floatleft"><img src="${createLinkTo(dir: 'images', file: 'user.png')}" alt="" /></a>
                 <div class="ticketInfo">
                     <ul>
                         <li><a href="#" title="">Eugene Kopyov</a></li>
@@ -673,7 +673,7 @@
             </div>
 
             <div class="issueSummary">
-                <a href="#" title="" class="floatleft"><img src="images/user.png" alt="" /></a>
+                <a href="#" title="" class="floatleft"><img src="${createLinkTo(dir: 'images', file: 'user.png')}" alt="" /></a>
                 <div class="ticketInfo">
                     <ul>
                         <li><a href="#" title="">Eugene Kopyov</a></li>
