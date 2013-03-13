@@ -1,15 +1,15 @@
-<%@ page import="sisap.Perfil" %>
+<%@ page import="sisap.Teste" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'perfil.label', default: 'Perfil')}" />
+		<g:set var="entityName" value="${message(code: 'teste.label', default: 'Teste')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
     <div class="wrapper">
     <div class="content" id="container">
-            <div class="title"><h5>Cadastrar ${message(code: 'perfil.label', default: 'Perfil')}</h5></div>
+            <div class="title"><h5>Cadastrar ${message(code: 'teste.label', default: 'Teste')}</h5></div>
         <div class="breadCrumbHolder module">
             <div class="breadCrumb module">
                 <ul>
@@ -19,10 +19,10 @@
                 </ul>
             </div>
         </div>
-			<g:hasErrors bean="${perfilInstance}">
+			<g:hasErrors bean="${testeInstance}">
                 <div class="pt20">
                 <ul class="errors" role="alert">
-				<g:eachError bean="${perfilInstance}" var="error">
+				<g:eachError bean="${testeInstance}" var="error">
 				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>
                     <div class="nNote nFailure hideit">
                         <p><strong>Erro: </strong><g:message error="${error}"/></p>

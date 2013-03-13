@@ -14,7 +14,12 @@
 </head>
 <body>
 <div class="loginWrapper">
-    <div class="loginLogo"><img src="images/loginLogo.png" alt="" /></div>
+    <div class="loginLogo"><img src="${createLinkTo(dir: 'images', file: 'loginLogo.png')}" alt="" /></div>
+    <g:if test="${flash.message}">
+        <div class="nNote nFailure hideit">
+            <p><strong>Erro: </strong>${flash.message}</p>
+        </div>
+    </g:if>
 
     <div class="loginPanel">
         <div class="head"><h5 class="iUser">Login</h5></div>

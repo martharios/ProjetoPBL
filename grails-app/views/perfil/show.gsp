@@ -1,35 +1,35 @@
-<%@ page import="sisap.Usuario" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<%@ page import="sisap.Perfil" %>
+<!DOCTYPE html>
+<html>
 <head>
     <meta name="layout" content="main">
-    <g:set var="entityName" value="${message(code: 'usuario.label', default: 'Usuario')}" />
+    <g:set var="entityName" value="${message(code: 'perfil.label', default: 'Perfil')}" />
     <title><g:message code="default.show.label" args="[entityName]" /></title>
 </head>
-
 <body>
 <div class="wrapper">
 
     <div class="content" id="container">
-        <div class="title"><h5>Mostrar Usuário</h5></div>
+        <div class="title"><h5><g:message code="default.show.label" args="[entityName]" /></h5></div>
         <div class="breadCrumbHolder module">
             <div class="breadCrumb module">
                 <ul>
                     <li class="firstB"><a href="#">Home</a> </li>
-                    <li><g:link action="index"> Usuários</g:link></li>
-                    <li><g:link action="show" id="${usuarioInstance?.id}">Mostrar Usuários</g:link></li>
+                    <li><g:link action="index"> <g:message code="default.list.label" args="[entityName]" /></g:link></li>
+                    <li><g:link action="show" id="${perfilInstance.id}"> <g:message code="default.show.label" args="[entityName]" /></g:link></li>
                 </ul>
             </div>
         </div>
-        <g:hasErrors bean="${usuarioInstance}">
+        <g:hasErrors bean="${perfilInstance}">
             <div class="pt20">
-
                 <ul class="errors" role="alert">
-                    <g:eachError bean="${usuarioInstance}" var="error">
+                    <g:eachError bean="${perfilInstance}" var="error">
                         <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>
                             <div class="nNote nFailure hideit">
-                                <p><strong>Erro: </strong><g:message error="${error}"/> </p>
+                                <p><strong>Erro: </strong><g:message error="${error}"/></p>
                             </div>
+
                         </li>
                     </g:eachError>
                 </ul>
@@ -44,34 +44,54 @@
         </g:if>
         <div class="middleNav">
             <g:form method="POST" >
-                <g:hiddenField name="id" value="${usuarioInstance?.id}" />
-            <ul>
-                <li class="iMes"><g:link controller="usuario" id="${usuarioInstance?.id}" action="edit"><span>Editar Usuário</span></g:link> </li>
-                <li class="iMes"><g:submitButton name="btnDelete" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"  controller="usuario" id="${usuarioInstance?.id}" action="delete"><span>Excluir Usuário</span></g:submitButton> </li>
-                <li class="iMes"></li>
-                <li class="iMes"><g:link controller="usuario" id="${usuarioInstance?.id}" action="edit"><span><g:submitButton name="btnDelete" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" value="Teste"  controller="usuario" id="${usuarioInstance?.id}" action="delete" /></span></g:link> </li>
-
-                %{--<li class="iMes"><span<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"  /></span></li>--}%
-            </ul>
+                <g:hiddenField name="id" value="${perfilInstance}" />
+                <ul>
+                    <li class="iEdit"><g:link id="${perfilInstance.id}" action="edit"><span><g:message code="default.edit.label" args="[entityName]" /></span></g:link> </li>
+                    <li class="iDelete"><g:link  onclick="if(!(jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'perfil.label', default: 'Perfil')}?', 'Confirmação')))return false;"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></g:link></li>
+                </ul>
             </g:form>
         </div>
         <div class="fix"></div>
         <div class="mainForm">
-        <fieldset>
+            <fieldset>
                 <div class="widget first">
-                    <div class="head"><h5 class="iList">Dados do usuário</h5></div>
-                    <div class="rowElem"><label>Nome:</label><div class="formRight"><input type="text" value="${usuarioInstance?.nome}" readonly="readonly" name="inputtext"/></div><div class="fix"></div></div>
-                    <div class="rowElem"><label>Login:</label><div class="formRight"><input type="text" value="${usuarioInstance?.login}" readonly="readonly" name="inputtext"/></div><div class="fix"></div></div>
-                    %{--<input type="submit" value="Cadastrar" class="greyishBtn submitForm" />--}%
-                    <div class="fix"></div>
+                    <div class="head"><h5 class="iList">Dados do teste</h5></div>
+                    
+                    <g:if test="${perfilInstance?.descricao}">
+                        <div class="rowElem"><label><span id="descricao-label" class="property-label"><g:message code="perfil.descricao.label" default="Descricao" /></span>:</label>
+                            <div class="formRight">
+                                
+                                <span class="property-value" aria-labelledby="descricao-label"><g:textField readonly="readonly" name="${perfilInstance}" value="${perfilInstance.descricao}" /></span>
+                                
+                            </div><div class="fix"></div></div>
+                    </g:if>
+                    
+                    <g:if test="${perfilInstance?.sigla}">
+                        <div class="rowElem"><label><span id="sigla-label" class="property-label"><g:message code="perfil.sigla.label" default="Sigla" /></span>:</label>
+                            <div class="formRight">
+                                
+                                <span class="property-value" aria-labelledby="sigla-label"><g:textField readonly="readonly" name="${perfilInstance}" value="${perfilInstance.sigla}" /></span>
+                                
+                            </div><div class="fix"></div></div>
+                    </g:if>
+                    
+                    <g:if test="${perfilInstance?.usuarios}">
+                        <div class="rowElem"><label><span id="usuarios-label" class="property-label"><g:message code="perfil.usuarios.label" default="Usuarios" /></span>:</label>
+                            <div class="formRight">
+                                
 
+                                <g:each in="${perfilInstance.usuarios}" var="u">
+                                    <span class="property-value" aria-labelledby="usuarios-label"><g:link controller="usuario" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span> <div class="fix"></div>
+                                </g:each>
+                                
+                            </div><div class="fix"></div></div>
+                    </g:if>
+                    
+                    <div class="fix"></div>
                 </div>
             </fieldset>
         </div>
-
-
     </div>
-
     <div class="fix"></div>
 </div>
 </body>

@@ -19,7 +19,12 @@ class LoginController {
             session.nome = usuario.nome
             render(view: '/index')
         }  else{
+            flash.message= "Usuário ou senha inválidos"
             render(view: 'loginPage')
         }
+    }
+    def logout(){
+        session.invalidate()
+        render(view: 'loginPage')
     }
 }

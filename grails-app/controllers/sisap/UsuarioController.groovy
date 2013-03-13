@@ -24,6 +24,7 @@ class UsuarioController {
 
     def save() {
         def usuarioInstance = new Usuario(params)
+        println usuarioInstance.perfil
         if (!usuarioInstance.save(flush: true)) {
             render(view: "create", model: [usuarioInstance: usuarioInstance])
             return

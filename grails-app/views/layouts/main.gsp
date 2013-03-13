@@ -76,21 +76,21 @@
     <div id="topNav">
         <div class="fixed">
             <div class="wrapper">
-                <div class="welcome"><a href="#" title=""> <img src="${createLinkTo(dir: 'images', file: 'userPic.png')}" alt="" /></a><span>Howdy, Eugene!</span></div>
+                <div class="welcome"><a href="#" title=""> <img src="${createLinkTo(dir: 'images', file: 'userPic.png')}" alt="" /></a><span>Olá, ${session.nome}!</span></div>
                 <div class="userNav">
                     <ul>
-                        <li><a href="#" title=""><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'profile.png')}" alt="" /><span>Profile</span></a></li>
-                        <li><a href="#" title=""><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'tasks.png')}" alt="" /><span>Tasks</span></a></li>
-                        <li class="dd"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'messages.png')}" alt="" /><span>Messages</span><span class="numberTop">8</span>
+                        <li><a href="#" title=""><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'profile.png')}" alt="" /><span>perfil</span></a></li>
+                        <li><a href="#" title=""><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'tasks.png')}" alt="" /><span>Tarefas</span></a></li>
+                        <li class="dd"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'messages.png')}" alt="" /><span>Mensagens</span><span class="numberTop">8</span>
                             <ul class="menu_body">
-                                <li><a href="#" title="">new message</a></li>
-                                <li><a href="#" title="">inbox</a></li>
-                                <li><a href="#" title="">outbox</a></li>
-                                <li><a href="#" title="">trash</a></li>
+                                <li><a href="#" title="">Nova mensagem</a></li>
+                                <li><a href="#" title="">Caixa de entrada</a></li>
+                                <li><a href="#" title="">Caixa de saída</a></li>
+                                <li><a href="#" title="">lixo eletrônico</a></li>
                             </ul>
                         </li>
-                        <li><a href="#" title=""><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'settings.png')}" alt="" /><span>Settings</span></a></li>
-                        <li><a href="login.html" title=""><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'logout.png')}" alt="" /><span>Logout</span></a></li>
+                        <li><a href="#" title=""><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'settings.png')}" alt="" /><span>Configurações</span></a></li>
+                        <li><g:link controller="login"  action="logout"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'logout.png')}" alt="" /><span>Sair</span></g:link> </li>
                     </ul>
                 </div>
                 <div class="fix"></div>
