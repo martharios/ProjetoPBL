@@ -14,7 +14,7 @@ environments {
     development {
         dataSource {
 
-            dbCreate = "update"
+            dbCreate = "create-drop"
 //            url = "jdbc:mysql://localhost/ServersApp"
             username = "postgres"
             password = "postgres"

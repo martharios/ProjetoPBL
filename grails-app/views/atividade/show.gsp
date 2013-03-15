@@ -1,10 +1,10 @@
 
-<%@ page import="sisap.Usuario" %>
+<%@ page import="sisap.Atividade" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main">
-    <g:set var="entityName" value="${message(code: 'usuario.label', default: 'Usuario')}" />
+    <g:set var="entityName" value="${message(code: 'atividade.label', default: 'Atividade')}" />
     <title><g:message code="default.show.label" args="[entityName]" /></title>
 </head>
 <body>
@@ -17,14 +17,14 @@
                 <ul>
                     <li class="firstB"><a href="#">Home</a> </li>
                     <li><g:link action="index"> <g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                    <li><g:link action="show" id="${usuarioInstance.id}"> <g:message code="default.show.label" args="[entityName]" /></g:link></li>
+                    <li><g:link action="show" id="${atividadeInstance.id}"> <g:message code="default.show.label" args="[entityName]" /></g:link></li>
                 </ul>
             </div>
         </div>
-        <g:hasErrors bean="${usuarioInstance}">
+        <g:hasErrors bean="${atividadeInstance}">
             <div class="pt20">
                 <ul class="errors" role="alert">
-                    <g:eachError bean="${usuarioInstance}" var="error">
+                    <g:eachError bean="${atividadeInstance}" var="error">
                         <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>
                             <div class="nNote nFailure hideit">
                                 <p><strong>Erro: </strong><g:message error="${error}"/></p>
@@ -44,10 +44,10 @@
         </g:if>
         <div class="middleNav">
             <g:form method="POST" >
-                <g:hiddenField name="id" value="${usuarioInstance}" />
+                <g:hiddenField name="id" value="${atividadeInstance}" />
                 <ul>
-                    <li class="iEdit"><g:link id="${usuarioInstance.id}" action="edit"><span><g:message code="default.edit.label" args="[entityName]" /></span></g:link> </li>
-                    <li class="iDelete"><g:link  onclick="if(!(jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'usuario.label', default: 'Usuario')}?', 'Confirmação')))return false;"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></g:link></li>
+                    <li class="iEdit"><g:link id="${atividadeInstance.id}" action="edit"><span><g:message code="default.edit.label" args="[entityName]" /></span></g:link> </li>
+                    <li class="iDelete"><g:link  onclick="if(!(jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'atividade.label', default: 'Atividade')}?', 'Confirmação')))return false;"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></g:link></li>
                 </ul>
             </g:form>
         </div>
@@ -57,20 +57,20 @@
                 <div class="widget first">
                     <div class="head"><h5 class="iList">Dados do teste</h5></div>
                     
-                    <g:if test="${usuarioInstance?.login}">
-                        <div class="rowElem"><label><span id="login-label" class="property-label"><g:message code="usuario.login.label" default="Login" /></span>:</label>
+                    <g:if test="${atividadeInstance?.descricao}">
+                        <div class="rowElem"><label><span id="descricao-label" class="property-label"><g:message code="atividade.descricao.label" default="Descricao" /></span>:</label>
                             <div class="formRight">
                                 
-                                <span class="property-value" aria-labelledby="login-label"><g:textField readonly="readonly" name="${usuarioInstance}" value="${usuarioInstance.login}" /></span>
+                                <span class="property-value" aria-labelledby="descricao-label"><g:textField readonly="readonly" name="${atividadeInstance}" value="${atividadeInstance.descricao}" /></span>
                                 
                             </div><div class="fix"></div></div>
                     </g:if>
                     
-                    <g:if test="${usuarioInstance?.senha}">
-                        <div class="rowElem"><label><span id="senha-label" class="property-label"><g:message code="usuario.senha.label" default="Senha" /></span>:</label>
+                    <g:if test="${atividadeInstance?.nome}">
+                        <div class="rowElem"><label><span id="nome-label" class="property-label"><g:message code="atividade.nome.label" default="Nome" /></span>:</label>
                             <div class="formRight">
                                 
-                                <span class="property-value" aria-labelledby="senha-label"><g:textField readonly="readonly" name="${usuarioInstance}" value="${usuarioInstance.senha}" /></span>
+                                <span class="property-value" aria-labelledby="nome-label"><g:textField readonly="readonly" name="${atividadeInstance}" value="${atividadeInstance.nome}" /></span>
                                 
                             </div><div class="fix"></div></div>
                     </g:if>

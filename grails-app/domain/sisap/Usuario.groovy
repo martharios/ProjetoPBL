@@ -2,18 +2,16 @@ package sisap
 
 class Usuario {
 
-    String nome
     String login
     String senha
-    String email
-    static belongsTo = [perfil: Perfil]
+    Pessoa pessoa
 
-
+    static hasOne = [pessoa: Pessoa]
 
     static constraints = {
-        nome(nullable: false, blank: false)
         login(nullable: false, blank: false)
         senha(nullable: false, blank: false)
+        pessoa(nullable: true)
     }
     def beforeInsert  = {
         senha = senha.encodeAsMD5()
@@ -22,6 +20,6 @@ class Usuario {
         version false
     }
     String toString(){
-        return nome + " ($login)"
+        return login
     }
 }

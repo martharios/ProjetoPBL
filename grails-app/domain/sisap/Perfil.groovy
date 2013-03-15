@@ -4,9 +4,6 @@ class Perfil {
 
     String sigla
     String descricao
-
-    static hasMany = [usuarios: Usuario]
-
     static constraints = {
 
     }

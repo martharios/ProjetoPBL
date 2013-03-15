@@ -5,18 +5,25 @@ import sisap.Usuario
 class LoginController {
 
     def index() {
-        render(view: 'loginPage')
+        if (session.auth){
+            render(view: '/index')
+        }else{
+            render(view: 'loginPage')
+        }
+
     }
     def logon(){
-        println params
         def usuario
         if (params.password && params.login){
             usuario = Usuario.findByLoginAndSenha(params.login, params.password.encodeAsMD5())
         }
         println usuario
         if (usuario){
+            session.auth=true
             session.login = usuario.login
-            session.nome = usuario.nome
+            println usuario.pessoa
+            session.nome = usuario?.pessoa?.nome
+
             render(view: '/index')
         }  else{
             flash.message= "Usuário ou senha inválidos"

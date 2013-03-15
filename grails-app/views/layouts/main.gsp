@@ -11,6 +11,7 @@
     <link href="${resource(dir: 'css', file: 'main.css')}" rel="stylesheet" type="text/css" />
     %{--<g:resource dir="css" file="main.css"/>--}%
     <link href='${resource(dir: 'css', file: 'googleFontCuprum.css')}' rel='stylesheet' type='text/css' />
+
     <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery-1.8.1.js')}"></script>
     <script type="text/javascript"  src="${createLinkTo(dir: 'js/spinner', file: 'jquery.mousewheel.js')}"></script>
     <script type="text/javascript" src="${createLinkTo(dir: 'js/spinner', file: 'ui.spinner.js')}"></script>
@@ -18,9 +19,9 @@
     <script src="${createLinkTo(dir: 'js', file: 'jquery-1.4.4.js')}" type="text/javascript"></script>
 
     <script type="text/javascript" src="${resource(dir: 'js', file: 'jquery-ui-1.9.2.custom.js')}"  ></script>
-    <script type="text/javascript" src="${resource(dir: 'js', file: 'custom.js')}"  ></script>
+    %{--<script type="text/javascript" src="${resource(dir: 'js', file: 'custom.js')}"  ></script>--}%
 
-
+    <script type="text/javascript" src="${resource(dir: 'js', file: 'plupload.js')}"  ></script>
 
 
     <script type="text/javascript" src="${createLinkTo(dir: 'js/fileManager', file: 'elfinder.min.js')}"></script>
@@ -51,10 +52,12 @@
     <script type="text/javascript" src="${createLinkTo(dir: 'js/uploader', file: 'plupload.html4.js')}"></script>
     <script type="text/javascript" src="${createLinkTo(dir: 'js/uploader', file: 'jquery.plupload.queue.js')}"></script>
 
+
     <script type="text/javascript" src="${createLinkTo(dir: 'js/ui', file: 'progress.js')}"></script>
     <script type="text/javascript" src="${createLinkTo(dir: 'js/ui', file: 'jquery.jgrowl.js')}"></script>
     <script type="text/javascript" src="${createLinkTo(dir: 'js/ui', file: 'jquery.tipsy.js')}"></script>
     <script type="text/javascript" src="${createLinkTo(dir: 'js/ui', file: 'jquery.alerts.js')}"></script>
+
 
     <script type="text/javascript" src="${resource(dir: 'js', file: 'custom.js')}"  ></script>
 
@@ -76,10 +79,10 @@
     <div id="topNav">
         <div class="fixed">
             <div class="wrapper">
-                <div class="welcome"><a href="#" title=""> <img src="${createLinkTo(dir: 'images', file: 'userPic.png')}" alt="" /></a><span>Olá, ${session.nome}!</span></div>
+                <div class="welcome"><img src="${createLinkTo(dir: 'images', file: 'userPic.png')}" alt="" /><span style="color: #ffffff;">Olá, ${session.nome}!</span></div>
                 <div class="userNav">
                     <ul>
-                        <li><a href="#" title=""><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'profile.png')}" alt="" /><span>perfil</span></a></li>
+                        <li><a href="#" title=""><g:link controller="meuPerfil" action="index"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'profile.png')}" alt="" /><span>perfil</span></g:link> </li>
                         <li><a href="#" title=""><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'tasks.png')}" alt="" /><span>Tarefas</span></a></li>
                         <li class="dd"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'messages.png')}" alt="" /><span>Mensagens</span><span class="numberTop">8</span>
                             <ul class="menu_body">

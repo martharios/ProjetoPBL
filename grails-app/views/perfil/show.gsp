@@ -43,11 +43,11 @@
             </div>
         </g:if>
         <div class="middleNav">
-            <g:form method="POST" >
-                <g:hiddenField name="id" value="${perfilInstance}" />
+            <g:form name="formShow" method="POST"  action="delete">
+                <g:hiddenField name="id" value="${perfilInstance.id}" />
                 <ul>
                     <li class="iEdit"><g:link id="${perfilInstance.id}" action="edit"><span><g:message code="default.edit.label" args="[entityName]" /></span></g:link> </li>
-                    <li class="iDelete"><g:link  onclick="if(!(jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'perfil.label', default: 'Perfil')}?', 'Confirmação')))return false;"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></g:link></li>
+                    <li class="iDelete"><a href="#" onclick="jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'perfil.label', default: 'Perfil')}?', 'Confirmação', function(e){if(e){$('form#formShow').submit();}});"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></a></li>
                 </ul>
             </g:form>
         </div>
@@ -71,18 +71,6 @@
                             <div class="formRight">
                                 
                                 <span class="property-value" aria-labelledby="sigla-label"><g:textField readonly="readonly" name="${perfilInstance}" value="${perfilInstance.sigla}" /></span>
-                                
-                            </div><div class="fix"></div></div>
-                    </g:if>
-                    
-                    <g:if test="${perfilInstance?.usuarios}">
-                        <div class="rowElem"><label><span id="usuarios-label" class="property-label"><g:message code="perfil.usuarios.label" default="Usuarios" /></span>:</label>
-                            <div class="formRight">
-                                
-
-                                <g:each in="${perfilInstance.usuarios}" var="u">
-                                    <span class="property-value" aria-labelledby="usuarios-label"><g:link controller="usuario" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span> <div class="fix"></div>
-                                </g:each>
                                 
                             </div><div class="fix"></div></div>
                     </g:if>

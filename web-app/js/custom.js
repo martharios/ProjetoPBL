@@ -19,8 +19,8 @@ $(function() {
 	//===== File manager =====//	
 	
 	$('#fileManager').elfinder({
-		url : 'php/connector.php',
-	})
+        url : 'php/connector.php',
+    })
 	
 
 	//===== Alert windows =====//

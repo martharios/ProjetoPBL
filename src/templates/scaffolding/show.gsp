@@ -43,11 +43,11 @@
             </div>
         </g:if>
         <div class="middleNav">
-            <g:form method="POST" >
-                <g:hiddenField name="id" value="\${${propertyName}}" />
+            <g:form name="formShow" method="POST"  action="delete">
+                <g:hiddenField name="id" value="\${${propertyName}.id}" />
                 <ul>
                     <li class="iEdit"><g:link id="\${${propertyName}.id}" action="edit"><span><g:message code="default.edit.label" args="[entityName]" /></span></g:link> </li>
-                    <li class="iDelete"><g:link  onclick="if(!(jConfirm('Tem certeza que deseja excluir este(a) \${message(code: '${domainClass.propertyName}.label', default: '${className}')}?', 'Confirmação')))return false;"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></g:link></li>
+                    <li class="iDelete"><a href="#" onclick="jConfirm('Tem certeza que deseja excluir este(a) \${message(code: '${domainClass.propertyName}.label', default: '${className}')}?', 'Confirmação', function(e){if(e){\$('form#formShow').submit();}});"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></a></li>
                 </ul>
             </g:form>
         </div>

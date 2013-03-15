@@ -1,15 +1,15 @@
-<%@ page import="sisap.Teste" %>
+<%@ page import="sisap.Disciplina" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main">
-    <g:set var="entityName" value="${message(code: 'teste.label', default: 'Teste')}" />
+    <g:set var="entityName" value="${message(code: 'disciplina.label', default: 'Disciplina')}" />
     <title><g:message code="default.update.label" args="[entityName]" /></title>
 </head>
 <body>
 <div class="wrapper">
     <div class="content" id="container">
-        <div class="title"><h5>Editar ${message(code: 'teste.label', default: 'Teste')}</h5></div>
+        <div class="title"><h5>Editar ${message(code: 'disciplina.label', default: 'Disciplina')}</h5></div>
         <div class="breadCrumbHolder module">
             <div class="breadCrumb module">
                 <ul>
@@ -19,10 +19,10 @@
                 </ul>
             </div>
         </div>
-        <g:hasErrors bean="${testeInstance}">
+        <g:hasErrors bean="${disciplinaInstance}">
             <div class="pt20">
                 <ul class="errors" role="alert">
-                    <g:eachError bean="${testeInstance}" var="error">
+                    <g:eachError bean="${disciplinaInstance}" var="error">
                         <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>>
                             <div class="nNote nFailure hideit">
                                 <p><strong>Erro: </strong><g:message error="${error}"/></p>
@@ -38,7 +38,7 @@
         <fieldset class="form">
             <div class="widget first">
                 <div class="head"><h5 class="iList">Preencha os campos abaixo</h5></div>
-                <g:hiddenField name="id" value="${testeInstance.id}" />
+                <g:hiddenField name="id" value="${disciplinaInstance.id}" />
                 <g:render template="form"/>
                 <g:submitButton name="create" class="greyishBtn submitForm" value="${message(code: 'default.button.update.label', default: 'Create')}" />
                 <div class="fix"></div>
