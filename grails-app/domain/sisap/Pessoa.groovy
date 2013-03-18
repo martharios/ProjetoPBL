@@ -1,6 +1,7 @@
 package sisap
 
 class Pessoa {
+    static mapWith="mongo"
 
     String nome
     String email

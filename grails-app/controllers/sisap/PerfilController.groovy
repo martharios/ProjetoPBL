@@ -63,8 +63,8 @@ class PerfilController {
         if (version != null) {
             if (perfilInstance.version > version) {
                 perfilInstance.errors.rejectValue("version", "default.optimistic.locking.failure",
-                        [message(code: 'perfil.label', default: 'Perfil')] as Object[],
-                        "Another user has updated this Perfil while you were editing")
+                          [message(code: 'perfil.label', default: 'Perfil')] as Object[],
+                          "Another user has updated this Perfil while you were editing")
                 render(view: "edit", model: [perfilInstance: perfilInstance])
                 return
             }

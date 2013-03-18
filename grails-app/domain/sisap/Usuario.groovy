@@ -1,6 +1,7 @@
 package sisap
 
 class Usuario {
+    static mapWith="mongo"
 
     String login
     String senha
@@ -14,6 +15,7 @@ class Usuario {
         pessoa(nullable: true)
     }
     def beforeInsert  = {
+        println "a"
         senha = senha.encodeAsMD5()
     }
     static mapping = {

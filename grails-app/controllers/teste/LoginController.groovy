@@ -15,7 +15,7 @@ class LoginController {
     def logon(){
         def usuario
         if (params.password && params.login){
-            usuario = Usuario.findByLoginAndSenha(params.login, params.password.encodeAsMD5())
+            usuario = Usuario.findByLoginAndSenha(params.login, params.password)
         }
         println usuario
         if (usuario){

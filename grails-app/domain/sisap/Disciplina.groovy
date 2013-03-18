@@ -1,6 +1,7 @@
 package sisap
 
 class Disciplina {
+    static mapWith="mongo"
 
     String nome
     String descricao

@@ -1,6 +1,7 @@
 package sisap
 
 class Atividade {
+    static mapWith="mongo"
 
     String nome
     String descricao

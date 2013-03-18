@@ -41,27 +41,18 @@
                 </div>
             </div>
         </g:if>
-        <div class="middleNav">
-            <g:form method="POST" >
-                <g:hiddenField name="id" value="${pessoaInstance}" />
-                <ul>
-                    <li class="iEdit"><g:link id="${pessoaInstance.id}" action="edit"><span><g:message code="default.edit.label" args="[entityName]" /></span></g:link> </li>
-                    <li class="iDelete"><g:link  onclick="if(!(jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'pessoa.label', default: 'Pessoa')}?', 'Confirmação')))return false;"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></g:link></li>
-                </ul>
-            </g:form>
-        </div>
         <div class="fix"></div>
         <div class="mainForm">
             <fieldset>
                 <div class="widget first">
-                    <div class="head"><h5 class="iList">Dados do teste</h5></div>
+                    <div class="head"><h5 class="iList">Minhas informações</h5></div>
 
                     <g:if test="${pessoaInstance?.usuario}">
                         <div class="rowElem"><label><span id="usuario-label" class="property-label"><g:message code="pessoa.usuario.label" default="Usuario" /></span>:</label>
                             <div class="formRight">
 
 
-                                <span class="property-value" aria-labelledby="usuario-label"><g:link controller="usuario" action="show" id="${pessoaInstance?.usuario?.id}">${pessoaInstance?.usuario?.encodeAsHTML()}</g:link></span>
+                                <span class="property-value" aria-labelledby="usuario-label"><g:link controller="usuario" action="show" id="${pessoaInstance?.usuario?.id.toString()}">${pessoaInstance?.usuario.login}</g:link></span>
 
                             </div><div class="fix"></div></div>
                     </g:if>

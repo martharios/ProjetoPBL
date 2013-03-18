@@ -1,6 +1,7 @@
 package sisap
 
 class PeriodoDisciplina {
+    static mapWith="mongo"
 
     String periodo
     Pessoa professor
