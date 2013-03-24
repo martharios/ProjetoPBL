@@ -107,7 +107,7 @@
 </div>
 <div id="footer">
     <div class="wrapper">
-        <span>&copy; Copyright 2013. Todos os direito reservados. UNIME</span>
+        <span>&copy; Copyright ${new java.text.SimpleDateFormat("yyyy").format(new Date())}. Todos os direito reservados. UNIME</span>
     </div>
 </div>
 <r:layoutResources />

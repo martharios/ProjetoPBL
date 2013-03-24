@@ -10,6 +10,7 @@
 
     <link href="${resource(dir: 'css', file: 'main.css')}" rel="stylesheet" type="text/css" />
     %{--<g:resource dir="css" file="main.css"/>--}%
+    <link rel="shortcut icon" href="${createLinkTo(dir: 'images', file: 'favicon.ico')}" type="image/x-icon" />
     <link href='${resource(dir: 'css', file: 'googleFontCuprum.css')}' rel='stylesheet' type='text/css' />
     <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery-1.8.1.js')}"></script>
     <g:javascript library="jquery" plugin="jquery" />
@@ -110,7 +111,7 @@
         </div>
         <div id="footer">
         <div class="wrapper">
-            <span>&copy; Copyright 2013. Todos os direito reservados. UNIME</span>
+            <span>&copy; Copyright ${new java.text.SimpleDateFormat("yyyy").format(new Date())}. Todos os direito reservados. UNIME</span>
         </div>
         </div>
 		<r:layoutResources />

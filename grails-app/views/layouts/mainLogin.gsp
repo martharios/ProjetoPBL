@@ -90,7 +90,7 @@
     <g:layoutBody/>
 <div id="footer">
     <div class="wrapper">
-        <span>&copy; Copyright 2011. All rights reserved. It's Brain admin theme by <a href="#" title="">Eugene Kopyov</a></span>
+        <span>&copy; Copyright ${new java.text.SimpleDateFormat("yyyy").format(new Date())}. Todos os direito reservados. UNIME</span>
     </div>
 </div>
 <r:layoutResources />
