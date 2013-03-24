@@ -1,5 +1,6 @@
 package teste
 
+import sisap.Pessoa
 import sisap.Usuario
 
 class LoginController {
@@ -13,16 +14,18 @@ class LoginController {
 
     }
     def logon(){
-        def usuario
-        if (params.password && params.login){
-            usuario = Usuario.findByLoginAndSenha(params.login, params.password)
+        def pessoa
+        if ((params.password && params.login)){
+                pessoa = Pessoa.findByMatriculaAndSenha(params.login, params.password)
+            if (!pessoa){
+                pessoa = Pessoa.findByEmailAndSenha(params.login, params.password)
+            }
         }
-        println usuario
-        if (usuario){
+        println pessoa
+        if (pessoa){
             session.auth=true
-            session.login = usuario.login
-            println usuario.pessoa
-            session.nome = usuario?.pessoa?.nome
+            session.login = pessoa.email
+            session.nome = pessoa?.nome
 
             render(view: '/index')
         }  else{

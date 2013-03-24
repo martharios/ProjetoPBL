@@ -6,6 +6,19 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'pessoa.label', default: 'Pessoa')}" />
     <title><g:message code="default.show.label" args="[entityName]" /></title>
+     <g:javascript>
+
+        function showHideAlterarSenha(){
+            if(!($("#divAlterarSenha").is(":visible")))  {
+                $("#divAlterarSenha").slideDown('slow');
+                $("#alterarSenha").text("Cancelar");
+            }else{
+                $("#divAlterarSenha").slideUp('slow');
+                $("#alterarSenha").text("Alterar Senha");
+            }
+        }
+
+     </g:javascript>
 </head>
 <body>
 <div class="wrapper">
@@ -95,6 +108,16 @@
 
                             </div><div class="fix"></div></div>
                     </g:if>
+                    <div class="rowElem"><label><span  class="property-label">
+                        <g:remoteLink action="ajaxAlterarSenha" id="${pessoaInstance?.id}" update="divAlterarSenha">
+                            <button id="alterarSenha" onclick="showHideAlterarSenha();" class="greyishBtn">Alterar Senha</button>
+                        </g:remoteLink>
+                        </span></label>
+                        <div class="formRight">
+                        <div id="divAlterarSenha" style="display: none;"></div>
+
+
+                        </div><div class="fix"></div></div>
 
                     <div class="fix"></div>
                 </div>

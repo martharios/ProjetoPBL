@@ -27,28 +27,26 @@
                     </div>
                 </div>
 			</g:if>
-        <div class="middleNav">
-            <ul>
-                <li class="iPlus"><g:link action="create"><span>Adicionar ${message(code: 'pessoa.label', default: 'Pessoa')}</span></g:link> </li>
-                %{--<li class="iStat"><a href="#" title=""><span>Buscar usuário</span></a></li>--}%
-                %{--<li class="iUser"><a href="#" title=""><span>User list</span></a></li>--}%
-                %{--<li class="iOrders"><a href="#" title=""><span>Billing panel</span></a></li>--}%
-            </ul>
-        </div>
+
         <div class="fix"></div>
+        <g:render template="search" />
         <div class="table">
-            <div class="head"><h5 class="iFrames">Listagem de <g:message code="default.list.label" args="[entityName]" />: ${pessoaInstanceTotal}</h5></div>
+
+            <div class="head"><h5 class="iFrames">Listagem de Pessoas: ${pessoaInstanceTotal}</h5></div>
 			<table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
-				<thead>
+				<thead class="head">
 					<tr>
-					
-						<td><g:message code="pessoa.usuario.label" default="Usuario" /></td>
-					
-                        <td>${message(code: 'pessoa.email.label', default: 'Email')}</td>
 					
                         <td>${message(code: 'pessoa.nome.label', default: 'Nome')}</td>
 					
-                        <td>${message(code: 'pessoa.telefoneCelular.label', default: 'Telefone Celular')}</td>
+                        <td>${message(code: 'pessoa.matricula.label', default: 'Matricula')}</td>
+					
+                        <td>${message(code: 'pessoa.email.label', default: 'Email')}</td>
+					
+
+                        <td>Perfil</td>
+                        <td align="center">Status</td>
+                        <td width="7%" align="center">Editar</td>
 					
 					</tr>
 				</thead>
@@ -56,14 +54,15 @@
 				<g:each in="${pessoaInstanceList}" status="i" var="pessoaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${pessoaInstance.id}">${fieldValue(bean: pessoaInstance, field: "usuario")}</g:link></td>
+						<td><g:link action="show" id="${pessoaInstance.id}">${fieldValue(bean: pessoaInstance, field: "nome")}</g:link></td>
 					
-						<td>${fieldValue(bean: pessoaInstance, field: "email")}</td>
+						<td align="center">${fieldValue(bean: pessoaInstance, field: "matricula")}</td>
 					
-						<td>${fieldValue(bean: pessoaInstance, field: "nome")}</td>
-					
-						<td>${fieldValue(bean: pessoaInstance, field: "telefoneCelular")}</td>
-					
+						<td align="left">${fieldValue(bean: pessoaInstance, field: "email")}</td>
+
+						<td>${fieldValue(bean: pessoaInstance, field: "perfil")}</td>
+                        <td align="center"><g:formatBoolean boolean="${pessoaInstance.status}" true="Ativo" false="Inativo" /></td>
+                        <td width="7%" align="center"><g:link action="edit" id="${pessoaInstance.id}"><img src="${createLinkTo(dir: 'images/icons/dark', file: 'pencil.png')}"></g:link></td>
 					</tr>
 				</g:each>
 				</tbody>
@@ -71,10 +70,10 @@
             </div>
         <div class="pagination">
             <ul class="pages">
-                <g:paginateCustom total="${pessoaInstanceTotal}" />
+                <g:paginateCustom total="${pessoaInstanceTotal}" params="${params}" />
             </ul>
         </div>
-
+                 <g:link action="create" style="float: right;"><button class="greyishBtn">Adicionar</button></g:link>
 		</div>
     <div class="fix"></div>
 	</body>

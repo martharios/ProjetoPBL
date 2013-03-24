@@ -4,6 +4,15 @@ import org.codehaus.groovy.grails.web.mapping.LinkGenerator
 import org.springframework.web.servlet.support.RequestContextUtils
 
 class CustomRenderTagLib {
+
+    def messageSuccess = {attrs ->
+        out << '<div class="pt20">'
+        out << '<div class="nNote nSuccess">'
+        out << "<strong>Sucesso: </strong>$attrs.message</p>"
+        out << '</div>'
+        out << '</div>'
+    }
+
     Closure paginateCustom = { attrs ->
         def writer = out
         if (attrs.total == null) {

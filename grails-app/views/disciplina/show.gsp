@@ -43,11 +43,11 @@
             </div>
         </g:if>
         <div class="middleNav">
-            <g:form method="POST" >
-                <g:hiddenField name="id" value="${disciplinaInstance}" />
+            <g:form name="formShow" method="POST"  action="delete">
+                <g:hiddenField name="id" value="${disciplinaInstance.id}" />
                 <ul>
                     <li class="iEdit"><g:link id="${disciplinaInstance.id}" action="edit"><span><g:message code="default.edit.label" args="[entityName]" /></span></g:link> </li>
-                    <li class="iDelete"><g:link  onclick="if(!(jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'disciplina.label', default: 'Disciplina')}?', 'Confirmação')))return false;"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></g:link></li>
+                    <li class="iDelete"><a href="#" onclick="jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'disciplina.label', default: 'Disciplina')}?', 'Confirmação', function(e){if(e){$('form#formShow').submit();}});"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></a></li>
                 </ul>
             </g:form>
         </div>
@@ -56,6 +56,15 @@
             <fieldset>
                 <div class="widget first">
                     <div class="head"><h5 class="iList">Dados do teste</h5></div>
+                    
+                    <g:if test="${disciplinaInstance?.codigo}">
+                        <div class="rowElem"><label><span id="codigo-label" class="property-label"><g:message code="disciplina.codigo.label" default="Codigo" /></span>:</label>
+                            <div class="formRight">
+                                
+                                <span class="property-value" aria-labelledby="codigo-label"><g:textField readonly="readonly" name="${disciplinaInstance}" value="${disciplinaInstance.codigo}" /></span>
+                                
+                            </div><div class="fix"></div></div>
+                    </g:if>
                     
                     <g:if test="${disciplinaInstance?.descricao}">
                         <div class="rowElem"><label><span id="descricao-label" class="property-label"><g:message code="disciplina.descricao.label" default="Descricao" /></span>:</label>

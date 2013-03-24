@@ -12,7 +12,26 @@ class PessoaController {
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [pessoaInstanceList: Pessoa.list(params), pessoaInstanceTotal: Pessoa.count()]
+        println params
+        def pessoaInstanceList = Pessoa.withCriteria(max: params.max, offset: params.offset) {
+             maxResults(params.max)
+            firstResult(params.offset ? params.offset.toInteger() : 0)
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.matricula){
+                ilike('matricula', "%$params.matricula%")
+            }
+        }
+        def pessoaInstanceTotal = Pessoa.createCriteria().count(){
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.matricula){
+                ilike('matricula', "%$params.matricula%")
+            }
+        }
+        [pessoaInstanceList: pessoaInstanceList, pessoaInstanceTotal: pessoaInstanceTotal]
     }
 
     def create() {

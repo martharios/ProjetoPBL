@@ -2,46 +2,90 @@
 
 
 
-<div class="rowElem"><label for="usuario">
-    <g:message code="pessoa.usuario.label" default="Usuario" />
-    
+<div class="rowElem"><label for="nome">
+    <g:message code="pessoa.nome.label" default="Nome" />
+    <span class="required-indicator">*</span>
 </label><div class="formRight">
-    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'usuario', 'error')} ">
+    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'nome', 'error')} required">
 
-        <g:select id="usuario" name="usuario.id" from="${sisap.Usuario.list()}" optionKey="id" value="${pessoaInstance?.usuario?.id}" class="many-to-one" noSelection="['': 'Selecione']"/>
+        <g:textField name="nome" required="" value="${pessoaInstance?.nome}"/>
+    </div>
+</div><div class="fix"></div></div>
+
+
+<div class="rowElem"><label for="matricula">
+    <g:message code="pessoa.matricula.label" default="Matricula" />
+    <span class="required-indicator">*</span>
+</label><div class="formRight">
+    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'matricula', 'error')} required">
+
+        <g:textField name="matricula" required="" value="${pessoaInstance?.matricula}"/>
     </div>
 </div><div class="fix"></div></div>
 
 
 <div class="rowElem"><label for="email">
     <g:message code="pessoa.email.label" default="Email" />
-    
+    <span class="required-indicator">*</span>
 </label><div class="formRight">
-    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'email', 'error')} ">
+    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'email', 'error')} required">
 
-        <g:textField name="email" value="${pessoaInstance?.email}"/>
+        <g:textField name="email" required="" value="${pessoaInstance?.email}"/>
     </div>
 </div><div class="fix"></div></div>
 
 
-<div class="rowElem"><label for="nome">
-    <g:message code="pessoa.nome.label" default="Nome" />
-    
+<div class="rowElem"><label for="cpf">
+    <g:message code="pessoa.cpf.label" default="Cpf" />
+    <span class="required-indicator">*</span>
 </label><div class="formRight">
-    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'nome', 'error')} ">
+    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'cpf', 'error')} required">
 
-        <g:textField name="nome" value="${pessoaInstance?.nome}"/>
+        <g:textField name="cpf" required="" value="${pessoaInstance?.cpf}"/>
     </div>
 </div><div class="fix"></div></div>
 
 
-<div class="rowElem"><label for="perfis">
-    <g:message code="pessoa.perfis.label" default="Perfis" />
+<div class="rowElem"><label for="senha">
+    <g:message code="pessoa.senha.label" default="Senha" />
+    <span class="required-indicator">*</span>
+</label><div class="formRight">
+    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'senha', 'error')} required">
+
+        <g:textField name="senha" required="" value="${pessoaInstance?.senha}"/>
+    </div>
+</div><div class="fix"></div></div>
+
+
+<div class="rowElem"><label for="perfilId">
+    <g:message code="pessoa.perfilId.label" default="Perfil Id" />
+    <span class="required-indicator">*</span>
+</label><div class="formRight">
+    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'perfilId', 'error')} required">
+
+        <g:select name="perfilId" from="${br.edu.unime.util.Perfil.mapPerfil}" optionKey="key" optionValue="value" value="${fieldValue(bean: pessoaInstance, field: 'perfilId')}" valueMessagePrefix="pessoa.perfilId"/>
+    </div>
+</div><div class="fix"></div></div>
+
+
+<div class="rowElem"><label for="status">
+    <g:message code="pessoa.status.label" default="Status" />
     
 </label><div class="formRight">
-    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'perfis', 'error')} ">
+    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'status', 'error')} ">
 
-        <g:select name="perfis" from="${sisap.Perfil.list()}" multiple="multiple" optionKey="id" size="5" value="${pessoaInstance?.perfis*.id}" class="many-to-many"/>
+        <g:checkBox name="status" value="${pessoaInstance?.status}" />
+    </div>
+</div><div class="fix"></div></div>
+
+
+<div class="rowElem"><label for="rg">
+    <g:message code="pessoa.rg.label" default="Rg" />
+    
+</label><div class="formRight">
+    <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'rg', 'error')} ">
+
+        <g:textField name="rg" value="${pessoaInstance?.rg}"/>
     </div>
 </div><div class="fix"></div></div>
 

@@ -3,9 +3,6 @@
         <li class="widgets"><a href="#" title="" class="exp"><span>Administração</span></a>
             <ul class="sub">
                 <li><g:link controller="meuPerfil" action="index" title="">Meu Perfil</g:link> </li>
-                <li><g:link controller="usuario" action="index" title="">Usuários</g:link> </li>
-                <li><g:link controller="perfil" action="index" title="">Perfis</g:link> </li>
-                <li><g:link controller="teste" action="index" title="">teste</g:link> </li>
                 <li><g:link controller="pessoa" action="index" title="">Pessoa</g:link> </li>
             </ul>
         </li>

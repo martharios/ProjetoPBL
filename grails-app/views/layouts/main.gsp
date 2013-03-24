@@ -11,8 +11,9 @@
     <link href="${resource(dir: 'css', file: 'main.css')}" rel="stylesheet" type="text/css" />
     %{--<g:resource dir="css" file="main.css"/>--}%
     <link href='${resource(dir: 'css', file: 'googleFontCuprum.css')}' rel='stylesheet' type='text/css' />
-
     <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery-1.8.1.js')}"></script>
+    <g:javascript library="jquery" plugin="jquery" />
+
     <script type="text/javascript"  src="${createLinkTo(dir: 'js/spinner', file: 'jquery.mousewheel.js')}"></script>
     <script type="text/javascript" src="${createLinkTo(dir: 'js/spinner', file: 'ui.spinner.js')}"></script>
 
