@@ -1,6 +1,6 @@
 package sisap
 
-class Disciplina {
+class Curso {
     static mapWith="mongo"
 
     String codigo
@@ -8,13 +8,12 @@ class Disciplina {
     String descricao
 
     static constraints = {
-        codigo(blank: false, unique: true)
-        nome(blank: false, unique: true)
-        descricao(maxSize: 500)
+        codigo(nullable: false,blank: false)
+        nome(nullable: false,blank: false)
+        descricao(nullable: false,blank: false)
     }
+
     String toString(){
         return nome
     }
 }
-
-

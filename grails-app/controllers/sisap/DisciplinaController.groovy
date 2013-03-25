@@ -5,14 +5,35 @@ import org.springframework.dao.DataIntegrityViolationException
 class DisciplinaController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+    def mailService
     def index() {
+
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        [disciplinaInstanceList: Disciplina.list(params), disciplinaInstanceTotal: Disciplina.count()]
+
+        def disciplinaInstanceList = Curso.withCriteria() {
+            maxResults(params.max)
+            firstResult(params.offset ? params.offset.toInteger() : 0)
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.codigo){
+                ilike('codigo', "%$params.codigo%")
+            }
+        }
+        def disciplinaInstanceTotal = Curso.createCriteria().count(){
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.codigo){
+                ilike('codigo', "%$params.codigo%")
+            }
+        }
+
+        [disciplinaInstanceList: disciplinaInstanceList, disciplinaInstanceTotal: disciplinaInstanceTotal]
     }
 
     def create() {

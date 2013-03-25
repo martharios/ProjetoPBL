@@ -11,6 +11,19 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 //grails.resources.debug=true
+grails {
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "trocamensagem@gmail.com"
+        password = "alexpaixao"
+        props = ["mail.smtp.auth":"true",
+                "mail.smtp.socketFactory.port":"465",
+                "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                "mail.smtp.socketFactory.fallback":"false"]
+    }
+}
+
 grails.mongo.default.mapping = {
     version false
     '*'(reference:true)

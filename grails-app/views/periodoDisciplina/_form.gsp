@@ -13,6 +13,17 @@
 </div><div class="fix"></div></div>
 
 
+<div class="rowElem"><label for="ano">
+    <g:message code="periodoDisciplina.ano.label" default="Ano" />
+    
+</label><div class="formRight">
+    <div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'ano', 'error')} ">
+
+        <g:textField name="ano" value="${periodoDisciplinaInstance?.ano}"/>
+    </div>
+</div><div class="fix"></div></div>
+
+
 <div class="rowElem"><label for="atividadesPeriodo">
     <g:message code="periodoDisciplina.atividadesPeriodo.label" default="Atividades Periodo" />
     
@@ -35,17 +46,6 @@
 </div><div class="fix"></div></div>
 
 
-<div class="rowElem"><label for="periodo">
-    <g:message code="periodoDisciplina.periodo.label" default="Periodo" />
-    
-</label><div class="formRight">
-    <div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'periodo', 'error')} ">
-
-        <g:textField name="periodo" value="${periodoDisciplinaInstance?.periodo}"/>
-    </div>
-</div><div class="fix"></div></div>
-
-
 <div class="rowElem"><label for="professor">
     <g:message code="periodoDisciplina.professor.label" default="Professor" />
     <span class="required-indicator">*</span>
@@ -53,6 +53,17 @@
     <div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'professor', 'error')} required">
 
         <g:select id="professor" name="professor.id" from="${sisap.Pessoa.list()}" optionKey="id" required="" value="${periodoDisciplinaInstance?.professor?.id}" class="many-to-one"/>
+    </div>
+</div><div class="fix"></div></div>
+
+
+<div class="rowElem"><label for="semestre">
+    <g:message code="periodoDisciplina.semestre.label" default="Semestre" />
+    
+</label><div class="formRight">
+    <div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'semestre', 'error')} ">
+
+        <g:textField name="semestre" value="${periodoDisciplinaInstance?.semestre}"/>
     </div>
 </div><div class="fix"></div></div>
 

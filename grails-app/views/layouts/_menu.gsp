@@ -4,6 +4,8 @@
             <ul class="sub">
                 <li><g:link controller="meuPerfil" action="index" title="">Meu Perfil</g:link> </li>
                 <li><g:link controller="pessoa" action="index" title="">Pessoa</g:link> </li>
+                <li><g:link controller="curso" action="index" title="">Curso</g:link> </li>
+                <li><g:link controller="disciplina" action="index" title="">Disciplina</g:link> </li>
             </ul>
         </li>
         <li class="widgets"><a href="#" title="" class="exp"><span>Atividades</span></a>

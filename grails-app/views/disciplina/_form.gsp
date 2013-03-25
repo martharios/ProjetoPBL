@@ -11,6 +11,15 @@
         <g:textField name="codigo" value="${disciplinaInstance?.codigo}"/>
     </div>
 </div><div class="fix"></div></div>
+<div class="rowElem"><label for="nome">
+    <g:message code="disciplina.nome.label" default="Nome" />
+
+</label><div class="formRight">
+    <div class="fieldcontain ${hasErrors(bean: disciplinaInstance, field: 'nome', 'error')} ">
+
+        <g:textField name="nome" value="${disciplinaInstance?.nome}"/>
+    </div>
+</div><div class="fix"></div></div>
 
 
 <div class="rowElem"><label for="descricao">
@@ -24,14 +33,5 @@
 </div><div class="fix"></div></div>
 
 
-<div class="rowElem"><label for="nome">
-    <g:message code="disciplina.nome.label" default="Nome" />
-    
-</label><div class="formRight">
-    <div class="fieldcontain ${hasErrors(bean: disciplinaInstance, field: 'nome', 'error')} ">
-
-        <g:textField name="nome" value="${disciplinaInstance?.nome}"/>
-    </div>
-</div><div class="fix"></div></div>
 
 

@@ -1,10 +1,10 @@
 
-<%@ page import="sisap.Disciplina" %>
+<%@ page import="sisap.Curso" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'disciplina.label', default: 'Disciplina')}" />
+		<g:set var="entityName" value="${message(code: 'curso.label', default: 'Curso')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -27,31 +27,33 @@
                     </div>
                 </div>
 			</g:if>
-        <g:render template="search" />
+
         <div class="fix"></div>
+        <g:render template="search" />
         <div class="table">
-            <div class="head"><h5 class="iFrames">Listagem de <g:message code="default.list.label" args="[entityName]" />: ${disciplinaInstanceTotal}</h5></div>
+            <div class="head"><h5 class="iFrames">Listagem de <g:message code="default.list.label" args="[entityName]" />: ${cursoInstanceTotal}</h5></div>
 			<table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
 				<thead>
 					<tr>
 					
-                        <td>${message(code: 'disciplina.codigo.label', default: 'Codigo')}</td>
+                        <td>${message(code: 'curso.codigo.label', default: 'Codigo')}</td>
 					
-                        <td>${message(code: 'disciplina.descricao.label', default: 'Descricao')}</td>
+                        <td>${message(code: 'curso.nome.label', default: 'Nome')}</td>
 					
-                        <td>${message(code: 'disciplina.nome.label', default: 'Nome')}</td>
-					
+                        <td>${message(code: 'curso.descricao.label', default: 'Descricao')}</td>
+					    <td width="7%">Editar</td>
 					</tr>
 				</thead>
 				<tbody>
-				<g:each in="${disciplinaInstanceList}" status="i" var="disciplinaInstance">
+				<g:each in="${cursoInstanceList}" status="i" var="cursoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${disciplinaInstance.id}">${fieldValue(bean: disciplinaInstance, field: "codigo")}</g:link></td>
+						<td><g:link action="show" id="${cursoInstance.id}">${fieldValue(bean: cursoInstance, field: "codigo")}</g:link></td>
 					
-						<td>${fieldValue(bean: disciplinaInstance, field: "descricao")}</td>
+						<td>${fieldValue(bean: cursoInstance, field: "nome")}</td>
 					
-						<td>${fieldValue(bean: disciplinaInstance, field: "nome")}</td>
+						<td>${fieldValue(bean: cursoInstance, field: "descricao")}</td>
+                        <td width="7%" align="center"><g:link action="edit" id="${cursoInstance?.id}"><img src="${createLinkTo(dir: 'images/icons/dark', file: 'pencil.png')}"></g:link></td>
 					
 					</tr>
 				</g:each>
@@ -60,7 +62,7 @@
             </div>
         <div class="pagination">
             <ul class="pages">
-                <g:paginateCustom total="${disciplinaInstanceTotal}" />
+                <g:paginateCustom total="${cursoInstanceTotal}" />
             </ul>
         </div>
         <g:link action="create" style="float: right;"><button class="greyishBtn">Adicionar</button></g:link>
