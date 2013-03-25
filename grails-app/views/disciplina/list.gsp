@@ -36,10 +36,12 @@
 					<tr>
 					
                         <td>${message(code: 'disciplina.codigo.label', default: 'Codigo')}</td>
-					
+
+                        <td>${message(code: 'disciplina.nome.label', default: 'Nome')}</td>
+
                         <td>${message(code: 'disciplina.descricao.label', default: 'Descricao')}</td>
 					
-                        <td>${message(code: 'disciplina.nome.label', default: 'Nome')}</td>
+
 					
 					</tr>
 				</thead>
@@ -48,10 +50,12 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${disciplinaInstance.id}">${fieldValue(bean: disciplinaInstance, field: "codigo")}</g:link></td>
+
+                        <td>${fieldValue(bean: disciplinaInstance, field: "nome")}</td>
+
+                        <td>${fieldValue(bean: disciplinaInstance, field: "descricao")}</td>
 					
-						<td>${fieldValue(bean: disciplinaInstance, field: "descricao")}</td>
-					
-						<td>${fieldValue(bean: disciplinaInstance, field: "nome")}</td>
+
 					
 					</tr>
 				</g:each>

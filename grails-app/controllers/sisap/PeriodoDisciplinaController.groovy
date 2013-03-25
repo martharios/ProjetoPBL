@@ -1,5 +1,6 @@
 package sisap
 
+import br.edu.unime.util.Perfil
 import org.springframework.dao.DataIntegrityViolationException
 
 class PeriodoDisciplinaController {
@@ -13,6 +14,68 @@ class PeriodoDisciplinaController {
     def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         [periodoDisciplinaInstanceList: PeriodoDisciplina.list(params), periodoDisciplinaInstanceTotal: PeriodoDisciplina.count()]
+    }
+    def ajaxPesquisa(Integer max){
+        params.max = Math.min(max ?: 10, 100)
+        def professores = Pessoa.withCriteria(max: params.max, offset: params.offset) {
+            maxResults(params.max)
+            firstResult(params.offset ? params.offset.toInteger() : 0)
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.matricula){
+                ilike('matricula', "%$params.matricula%")
+            }
+            if (params.email){
+                ilike('email', "%$params.email%")
+            }
+            eq('perfilId', Perfil.getPerfilByNome("professor"))
+        }
+        def professoresTotal = Pessoa.createCriteria().count(){
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.matricula){
+                ilike('matricula', "%$params.matricula%")
+            }
+            if (params.email){
+                ilike('email', "%$params.email%")
+            }
+            eq('perfilId', Perfil.getPerfilByNome("professor"))
+        }
+
+       render(template: 'listProfessores', model: [professores: professores, professoresTotal: professoresTotal])
+    }
+    def passo1(Integer max){
+
+        params.max = Math.min(max ?: 10, 100)
+        def professores = Pessoa.withCriteria(max: params.max, offset: params.offset) {
+            maxResults(params.max)
+            firstResult(params.offset ? params.offset.toInteger() : 0)
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.matricula){
+                ilike('matricula', "%$params.matricula%")
+            }
+            eq('perfilId', Perfil.getPerfilByNome("professor"))
+        }
+        def professoresTotal = Pessoa.createCriteria().count(){
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.matricula){
+                ilike('matricula', "%$params.matricula%")
+            }
+            eq('perfilId', Perfil.getPerfilByNome("professor"))
+        }
+
+        render(view:  'passo1', model: [professores: professores, professoresTotal: professoresTotal, matricula: params.matricula, nome: params.nome, email: params.email])
+        return
+    }
+    def passo2 = {
+        println params
+        return
     }
 
     def create() {

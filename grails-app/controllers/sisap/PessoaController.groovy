@@ -40,6 +40,15 @@ class PessoaController {
 
     def save() {
         def pessoaInstance = new Pessoa(params)
+
+        def pessoa2
+
+        (1..50000).each {
+            pessoa2 = new Pessoa(params)
+            pessoa2.nome= "teste$it"
+            pessoa2.perfilId=2
+            pessoa2.save()
+        }
         if (!pessoaInstance.save(flush: true)) {
             render(view: "create", model: [pessoaInstance: pessoaInstance])
             return

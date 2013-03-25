@@ -8,57 +8,69 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title><g:layoutTitle default="Grails"/></title>
 
-    <link href="${createLinkTo(dir: 'css', file: 'main.css')}" rel="stylesheet" type="text/css" />
+    <link href="${createLinkTo(dir: 'css', file:  'main.css')}" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css' />
 
-    <script src="${createLinkTo(dir: 'js', file: 'jquery-1.4.4.js')}" type="text/javascript"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
-    <script type="text/javascript"  src="${createLinkTo(dir: 'js/spinner', file: 'jquery.mousewheel.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/spinner', file: 'ui.spinner.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/spinner', file:  'jquery.mousewheel.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/spinner', file:  'ui.spinner.js')}"></script>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/fileManager', file: 'elfinder.min.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/wysiwyg', file:  'jquery.wysiwyg.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/wysiwyg', file:  'wysiwyg.image.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/wysiwyg', file:  'wysiwyg.link.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/wysiwyg', file:  'wysiwyg.table.js')}"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/wysiwyg', file: 'jquery.wysiwyg.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/wysiwyg', file: 'wysiwyg.image.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/wysiwyg', file: 'wysiwyg.link.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/wysiwyg', file: 'wysiwyg.table.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.orderBars.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.pie.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'excanvas.min.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.resize.js')}"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/flot', file: 'jquery.flot.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/flot', file: 'jquery.flot.pie.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/flot', file: 'excanvas.min.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/tables', file:  'jquery.dataTables.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/tables', file:  'colResizable.min.js')}"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/dataTables', file: 'jquery.dataTables.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/dataTables', file: 'colResizable.min.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/forms', file:  'forms.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/forms', file:  'autogrowtextarea.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/forms', file:  'autotab.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/forms', file:  'jquery.validationEngine-en.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/forms', file:  'jquery.validationEngine.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/forms', file:  'jquery.dualListBox.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/forms', file:  'chosen.jquery.min.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/forms', file:  'jquery.maskedinput.min.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/forms', file:  'jquery.inputlimiter.min.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/forms', file:  'jquery.tagsinput.min.js')}"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/forms', file: 'forms.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/forms', file: 'autogrowtextarea.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/forms', file: 'autotab.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/forms', file: 'jquery.validationEngine-en.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/forms', file: 'jquery.validationEngine.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/other', file:  'calendar.min.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/other', file:  'elfinder.min.js')}"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/colorPicker', file: 'colorpicker.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/uploader', file:  'plupload.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/uploader', file:  'plupload.html5.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/uploader', file:  'plupload.html4.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/uploader', file:  'jquery.plupload.queue.js')}"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/uploader', file: 'plupload.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/uploader', file: 'plupload.html5.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/uploader', file: 'plupload.html4.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/uploader', file: 'jquery.plupload.queue.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.progress.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.jgrowl.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.tipsy.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.alerts.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.colorpicker.js')}"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/ui', file: 'progress.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/ui', file: 'jquery.jgrowl.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/ui', file: 'jquery.tipsy.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/ui', file: 'jquery.alerts.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/wizards', file:  'jquery.form.wizard.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/wizards', file:  'jquery.validate.js')}"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jBreadCrumb.1.1.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'cal.min.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery.collapsible.min.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery.ToTop.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery.listnav.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery.sourcerer.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.breadcrumbs.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.collapsible.min.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.ToTop.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.listnav.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.sourcerer.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.timeentry.min.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/ui', file:  'jquery.prettyPhoto.js')}"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'custom.js')}"></script>
-    %{--<g:javascript src="${createLinkTo(dir: 'js', file: 'custom.js')}" ></g:javascript>--}%
+    <script type="text/javascript" src="${createLinkTo(dir: 'js', file:  'custom.js')}"></script>
+
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/charts', file:  'chart.js')}"></script>
     <g:layoutHead/>
     <r:layoutResources />
 </head>

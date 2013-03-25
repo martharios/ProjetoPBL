@@ -5,7 +5,7 @@ class PeriodoDisciplina {
 
     Integer ano
     Integer semestre
-    String getPeriodo() {return ano + "." + semestre}
+    String getPeriodo() {return ano.toString() + "." + semestre.toString()}
     Pessoa professor
     Disciplina disciplina
 

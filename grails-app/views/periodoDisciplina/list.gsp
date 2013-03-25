@@ -27,14 +27,7 @@
                     </div>
                 </div>
 			</g:if>
-        <div class="middleNav">
-            <ul>
-                <li class="iPlus"><g:link action="create"><span>Adicionar ${message(code: 'periodoDisciplina.label', default: 'PeriodoDisciplina')}</span></g:link> </li>
-                %{--<li class="iStat"><a href="#" title=""><span>Buscar usuário</span></a></li>--}%
-                %{--<li class="iUser"><a href="#" title=""><span>User list</span></a></li>--}%
-                %{--<li class="iOrders"><a href="#" title=""><span>Billing panel</span></a></li>--}%
-            </ul>
-        </div>
+
         <div class="fix"></div>
         <div class="table">
             <div class="head"><h5 class="iFrames">Listagem de <g:message code="default.list.label" args="[entityName]" />: ${periodoDisciplinaInstanceTotal}</h5></div>
@@ -74,6 +67,7 @@
                 <g:paginateCustom total="${periodoDisciplinaInstanceTotal}" />
             </ul>
         </div>
+        <g:link action="passo1" style="float: right;"><button class="greyishBtn">Adicionar</button></g:link>
 
 		</div>
     <div class="fix"></div>
