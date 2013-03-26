@@ -74,7 +74,9 @@ class PeriodoDisciplinaController {
         return
     }
     def passo2 = {
-        println params
+        def professor = Pessoa.read(params.professor)
+        println professor.nome
+        render(view: 'passo2')
         return
     }
 

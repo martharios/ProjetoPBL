@@ -64,7 +64,7 @@
             </div>
         <div class="pagination">
             <ul class="pages">
-                <g:paginateCustom total="${disciplinaInstanceTotal}" />
+                <g:paginateCustom total="${disciplinaInstanceTotal}" params="${params}" />
             </ul>
         </div>
         <g:link action="create" style="float: right;"><button class="greyishBtn">Adicionar</button></g:link>

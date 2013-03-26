@@ -12,6 +12,9 @@
         var emailValue = $("#email").val();
         ${remoteFunction(action: 'ajaxPesquisa', update: "tabelaProfessores", params: "'matricula=' + matriculaValue + '&nome=' + nomeValue + '&email=' + emailValue")}
     }
+    function professorAttr(obj){
+        $("#professor").val($(obj).val())
+    }
     </g:javascript>
 </head>
 <body>
@@ -19,32 +22,10 @@
 <div class="content">
 <div class="title"><h5>Cadastrar Disciplina em Período</h5></div>
 
-<div class="table">
-<div class="head"><h5 class="iFrames">Dynamic table</h5></div>
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
-<thead>
-<tr>
-    <th>Código</th>
-    <th>Nome</th>
-    <th>Descrição</th>
-
-</tr>
-</thead>
-<tbody>
-<g:each in="${sisap.Disciplina.list()}" var="d">
-    <tr class="gradeA">
-        <td>${d?.codigo}</td>
-        <td>${d?.nome}</td>
-        <td>${d?.descricao}</td>
-    </tr>
-</g:each>
-</tbody>
-</table>
-</div>
-    <g:form action="passo2" class="mainForm">
+    <g:form id="nextPasso2" name="nextPasso2" action="passo2" class="mainForm">
     <fieldset class="form" >
         <div class="widget first">
-            <div class="head"><h5 class="iList">Preencha os campos abaixo</h5></div>
+            <div class="head"><h5 class="iList">Período</h5></div>
 
              <div class="rowElem"><label for="ano">
                 <g:message code="periodoDisciplina.ano.label" default="Ano" />
@@ -65,25 +46,13 @@
                     <g:textField name="semestre" value="${periodoDisciplinaInstance?.semestre}"/>
                 </div>
             </div><div class="fix"></div></div>
+             <g:hiddenField name="professor" id="professor" value="" />
 
-            <div class="rowElem"><label for="disciplina">
-                <g:message code="periodoDisciplina.disciplina.label" default="Disciplina" />
-                <span class="required-indicator">*</span>
-            </label><div class="formRight">
-                <div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'disciplina', 'error')} required">
-
-                    <g:select id="disciplina" name="disciplina.id"  from="${sisap.Disciplina.list()}" optionKey="id" required="" value="${periodoDisciplinaInstance?.disciplina?.id}" />
-                </div>
-            </div><div class="fix"></div></div>
-
-
-
-
-            <g:submitButton name="create" class="greyishBtn submitForm" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-            <div class="fix"></div>
+        </g:form>
+    <div class="fix"></div>
         </div>
     </fieldset>
-       <g:form action="passo1"  class="mainForm">
+       <g:form name="buscarProfessor"  id="buscarProfessor" action="passo1"  class="mainForm">
            <fieldset>
                <div class="widget">
                    <div class="head"><h5 class="iView">Buscar Professor</h5></div>
@@ -94,7 +63,7 @@
                    </div>
                    <div class="floatright twoOne">
                        <div class="rowElem noborder pb0"><label class="topLabel">Matrícula:</label><div class="formBottom"><g:textField name="matricula" value="${params?.matricula}" /></div><div class="fix"></div></div>
-                       <div class="rowElem noborder pb0" style="float: right;"><div class="formBottom"><button id="btnBuscar"></button>  <g:submitButton name="teste" class="greyishBtn" value="Buscar"  /></div><div class="fix"></div></div>
+                       <div class="rowElem noborder pb0" style="float: right;"><div class="formBottom"><g:submitToRemote update="tabelaProfessores" url="[action: 'ajaxPesquisa']" name="teste" value="Buscar" class="greyishBtn" /></div><div class="fix"></div></div>
 
                    </div>
 
@@ -106,7 +75,7 @@
        </g:form>
 <div id="tabelaProfessores">
     <div class="table">
-        <div class="head"><h5 class="iFrames">Professor da Disciplina</h5></div>
+        <div class="head"><h5 class="iFrames">Professor da Disciplina: ${professoresTotal} </h5></div>
 
 
         <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
@@ -121,7 +90,7 @@
             <tbody>
             <g:each in="${professores}" var="professor" status="i">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td width="10%"><div class="rowElem"><input type="radio" value="${professor.id}"  name="professor"  /></div></td>
+                    <td width="10%"><div class="rowElem"><input type="radio" onclick="professorAttr(this);" value="${professor.id}"  name="professor"  /></div></td>
                     <td width="20%">${professor?.matricula}</td>
                     <td>${professor?.nome}</td>
                     <td>${professor?.email}</td>
@@ -135,10 +104,10 @@
             <g:paginateCustom total="${professoresTotal}" params="${params}" />
         </ul>
     </div>
+
+
 </div>
-
-
-   </g:form>
+    <button class="greyishBtn" onclick="$('form#nextPasso2').submit();">Prosseguir</button>
 </div>
 <div class="fix"></div>
 </div>
