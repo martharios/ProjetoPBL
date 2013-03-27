@@ -24,7 +24,7 @@ class LoginController {
         println pessoa
         if (pessoa){
             session.auth=true
-            session.login = pessoa.email
+            session.idPessoa = pessoa.id
             session.nome = pessoa?.nome
 
             render(view: '/index')

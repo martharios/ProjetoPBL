@@ -13,7 +13,12 @@
         ${remoteFunction(action: 'ajaxPesquisa', update: "tabelaProfessores", params: "'matricula=' + matriculaValue + '&nome=' + nomeValue + '&email=' + emailValue")}
     }
     function professorAttr(obj){
-        $("#professor").val($(obj).val())
+        $("#hiddenProfessorNome").val($("#tdNomeProfessor"+$(obj).val()).text());
+        $("#hiddenProfessor").val($(obj).val())
+    }
+    function disciplinaAttr(obj){
+        $("#hiddenDisciplinaNome").val($("#tdNomeDisciplina"+$(obj).val()).text());
+        $("#hiddenDisciplina").val($(obj).val())
     }
     </g:javascript>
 </head>
@@ -22,7 +27,7 @@
 <div class="content">
 <div class="title"><h5>Cadastrar Disciplina em Período</h5></div>
 
-    <g:form id="nextPasso2" name="nextPasso2" action="passo2" class="mainForm">
+    <g:form id="nextPasso2" name="nextPasso2" action="save" class="mainForm">
     <fieldset class="form" >
         <div class="widget first">
             <div class="head"><h5 class="iList">Período</h5></div>
@@ -46,68 +51,46 @@
                     <g:textField name="semestre" value="${periodoDisciplinaInstance?.semestre}"/>
                 </div>
             </div><div class="fix"></div></div>
-             <g:hiddenField name="professor" id="professor" value="" />
+        <div class="rowElem"><label for="semestre">
+                Professor
+            </label><div class="formRight">
+                <div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'professor', 'error')} ">
 
-        </g:form>
+                    %{--<g:textField name="professorNome" value="${periodoDisciplinaInstance?.semestre}"/>--}%
+                    <div id="divProfessor">
+                        <g:textField name="professorNome" id="professorNome" readonly="readonly" />
+                        <a href="#" id="teste" onclick="${remoteFunction(action: 'ajaxPesquisaProfessor', update: 'professorDialog')};$('#professorDialog').dialog({'minWidth': '750', 'position': 'center top'});"><img src="${createLinkTo(dir: 'images/icons/dark', file: 'add.png')}"></a>
+                    </div>
+
+                    <div id="professorDialog" title="Selecionar Professor" style="display: none;"></div>
+                </div>
+            <g:hiddenField name="professor" id="professor" value="" />
+            </div><div class="fix"></div></div>
+        <div class="rowElem"><label>
+                Disciplina
+            </label><div class="formRight">
+                <div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'disciplina', 'error')} ">
+
+                    %{--<g:textField name="professorNome" value="${periodoDisciplinaInstance?.semestre}"/>--}%
+                    <div id="divDisciplina">
+                        <g:textField name="disciplinaNome" id="disciplinaNome" readonly="readonly" />
+                        <a href="#" id="teste" onclick="${remoteFunction(action: 'ajaxPesquisaDisciplina', update: 'disciplinaDialog')};$('#disciplinaDialog').dialog({'minWidth': '750', 'position': 'center top'});"><img src="${createLinkTo(dir: 'images/icons/dark', file: 'add.png')}"></a>
+                    </div>
+
+                    <div id="disciplinaDialog" title="Selecionar Disciplina" style="display: none;"></div>
+                </div>
+            <g:hiddenField name="disciplina" id="disciplina" value="" />
+            </div><div class="fix"></div></div>
+
+      </g:form>
     <div class="fix"></div>
+    <div class="rowElem"><button class="greyishBtn" onclick="$('form#nextPasso2').submit();">Prosseguir</button></div>
+
         </div>
     </fieldset>
-       <g:form name="buscarProfessor"  id="buscarProfessor" action="passo1"  class="mainForm">
-           <fieldset>
-               <div class="widget">
-                   <div class="head"><h5 class="iView">Buscar Professor</h5></div>
-                   <div class="floatleft twoOne">
-                       <div class="rowElem noborder pb0"><label class="topLabel">Nome:</label><div class="formBottom"><g:textField name="nome" value="${params?.nome}" /></div><div class="fix"></div></div>
 
 
-                   </div>
-                   <div class="floatright twoOne">
-                       <div class="rowElem noborder pb0"><label class="topLabel">Matrícula:</label><div class="formBottom"><g:textField name="matricula" value="${params?.matricula}" /></div><div class="fix"></div></div>
-                       <div class="rowElem noborder pb0" style="float: right;"><div class="formBottom"><g:submitToRemote update="tabelaProfessores" url="[action: 'ajaxPesquisa']" name="teste" value="Buscar" class="greyishBtn" /></div><div class="fix"></div></div>
 
-                   </div>
-
-                   <div class="fix"></div>
-               </div>
-           </fieldset>
-
-
-       </g:form>
-<div id="tabelaProfessores">
-    <div class="table">
-        <div class="head"><h5 class="iFrames">Professor da Disciplina: ${professoresTotal} </h5></div>
-
-
-        <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
-            <thead class="head">
-            <tr>
-                <td width="10%">Selecione</td>
-                <td width="20%">Matrícula</td>
-                <td>Nome</td>
-                <td>Email</td>
-            </tr>
-            </thead>
-            <tbody>
-            <g:each in="${professores}" var="professor" status="i">
-                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td width="10%"><div class="rowElem"><input type="radio" onclick="professorAttr(this);" value="${professor.id}"  name="professor"  /></div></td>
-                    <td width="20%">${professor?.matricula}</td>
-                    <td>${professor?.nome}</td>
-                    <td>${professor?.email}</td>
-                </tr>
-            </g:each>
-            </tbody>
-        </table>
-    </div>
-    <div class="pagination">
-        <ul class="pages">
-            <g:paginateCustom total="${professoresTotal}" params="${params}" />
-        </ul>
-    </div>
-
-
-</div>
-    <button class="greyishBtn" onclick="$('form#nextPasso2').submit();">Prosseguir</button>
 </div>
 <div class="fix"></div>
 </div>

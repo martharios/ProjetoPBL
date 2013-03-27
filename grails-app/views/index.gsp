@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
+		<title>SISAP - Sistema de Apoio a Projetos</title>
 
     </head>
 <body>

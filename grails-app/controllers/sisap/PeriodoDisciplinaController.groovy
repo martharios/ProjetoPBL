@@ -15,8 +15,8 @@ class PeriodoDisciplinaController {
         params.max = Math.min(max ?: 10, 100)
         [periodoDisciplinaInstanceList: PeriodoDisciplina.list(params), periodoDisciplinaInstanceTotal: PeriodoDisciplina.count()]
     }
-    def ajaxPesquisa(Integer max){
-        params.max = Math.min(max ?: 10, 100)
+    def ajaxPesquisaProfessor(Integer max){
+        params.max = Math.min(max ?: 5, 100)
         def professores = Pessoa.withCriteria(max: params.max, offset: params.offset) {
             maxResults(params.max)
             firstResult(params.offset ? params.offset.toInteger() : 0)
@@ -46,9 +46,34 @@ class PeriodoDisciplinaController {
 
        render(template: 'listProfessores', model: [professores: professores, professoresTotal: professoresTotal])
     }
+    def ajaxPesquisaDisciplina(Integer max){
+        params.max = Math.min(max ?: 5, 100)
+        def disciplinas = Disciplina.withCriteria(max: params.max, offset: params.offset) {
+            maxResults(params.max)
+            firstResult(params.offset ? params.offset.toInteger() : 0)
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.codigo){
+                ilike('codigo', "%$params.codigo%")
+            }
+
+        }
+        def disciplinasTotal = Disciplina.createCriteria().count(){
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.codigo){
+                ilike('codigo', "%$params.codigo%")
+            }
+
+        }
+
+        render(template: 'listDisciplina', model: [disciplinas: disciplinas, disciplinasTotal: disciplinasTotal])
+    }
     def passo1(Integer max){
 
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 5, 100)
         def professores = Pessoa.withCriteria(max: params.max, offset: params.offset) {
             maxResults(params.max)
             firstResult(params.offset ? params.offset.toInteger() : 0)
@@ -74,9 +99,9 @@ class PeriodoDisciplinaController {
         return
     }
     def passo2 = {
-        def professor = Pessoa.read(params.professor)
-        println professor.nome
-        render(view: 'passo2')
+
+
+//        render(view: 'passo2')
         return
     }
 
@@ -85,9 +110,15 @@ class PeriodoDisciplinaController {
     }
 
     def save() {
-        def periodoDisciplinaInstance = new PeriodoDisciplina(params)
+        def periodoDisciplinaInstance = new PeriodoDisciplina()
+        periodoDisciplinaInstance.disciplina = Disciplina.read(params.disciplina)
+        periodoDisciplinaInstance.professor = Pessoa.read(params.professor)
+        periodoDisciplinaInstance.ano = Integer.parseInt(params.ano)
+        periodoDisciplinaInstance.semestre = Integer.parseInt(params.semestre)
+        periodoDisciplinaInstance.autorCadastro=Pessoa.read(session.idPessoa)
+
         if (!periodoDisciplinaInstance.save(flush: true)) {
-            render(view: "create", model: [periodoDisciplinaInstance: periodoDisciplinaInstance])
+            render(view: "passo1", model: [periodoDisciplinaInstance: periodoDisciplinaInstance])
             return
         }
 

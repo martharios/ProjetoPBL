@@ -60,13 +60,16 @@ class PessoaController {
 
     def show(Long id) {
         def pessoaInstance = Pessoa.get(id)
+        def aulas
+        aulas = PeriodoDisciplina.findAllByProfessor(pessoaInstance)
+
         if (!pessoaInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'pessoa.label', default: 'Pessoa'), id])
             redirect(action: "list")
             return
         }
 
-        [pessoaInstance: pessoaInstance]
+        [pessoaInstance: pessoaInstance, aulas: aulas]
     }
 
     def edit(Long id) {

@@ -5,8 +5,7 @@ import static sisap.Pessoa.*
 class MeuPerfilController {
 
     def index() {
-        def pessoaInstance = Pessoa.findByUsuario(Usuario.findByLogin(session.login))
-        println pessoaInstance.nome
+        def pessoaInstance = Pessoa.get(session.idPessoa)
         render(view: 'index', model: [pessoaInstance: pessoaInstance])
     }
     def ajaxAlterarSenha(Long id){

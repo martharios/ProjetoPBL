@@ -5,8 +5,13 @@ class PeriodoDisciplina {
 
     Integer ano
     Integer semestre
+    Integer sala
+
+
+
     String getPeriodo() {return ano.toString() + "." + semestre.toString()}
     Pessoa professor
+    Pessoa autorCadastro
     Disciplina disciplina
 
     static transients = ['periodo']

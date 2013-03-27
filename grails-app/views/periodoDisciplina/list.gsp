@@ -35,28 +35,30 @@
 				<thead>
 					<tr>
 					
-                        <td>${message(code: 'periodoDisciplina.ano.label', default: 'Ano')}</td>
+                        <td width="50%">${message(code: 'periodoDisciplina.disciplina.label', default: 'Disciplina')}</td>
 					
-						<td><g:message code="periodoDisciplina.disciplina.label" default="Disciplina" /></td>
-					
+						<td><g:message code="periodoDisciplina.periodo.label" default="Período" /></td>
+
+
 						<td><g:message code="periodoDisciplina.professor.label" default="Professor" /></td>
 					
-                        <td>${message(code: 'periodoDisciplina.semestre.label', default: 'Semestre')}</td>
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${periodoDisciplinaInstanceList}" status="i" var="periodoDisciplinaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${periodoDisciplinaInstance.id}">${fieldValue(bean: periodoDisciplinaInstance, field: "ano")}</g:link></td>
-					
-						<td>${fieldValue(bean: periodoDisciplinaInstance, field: "disciplina")}</td>
-					
+						<td width="50%"><g:link action="show" id="${periodoDisciplinaInstance.id}">
+                            ${periodoDisciplinaInstance.disciplina.toString()} - ${periodoDisciplinaInstance.periodo}
+                        </g:link></td>
+
+                        <td>${periodoDisciplinaInstance.periodo}</td>
+
+
 						<td>${fieldValue(bean: periodoDisciplinaInstance, field: "professor")}</td>
 					
-						<td>${fieldValue(bean: periodoDisciplinaInstance, field: "semestre")}</td>
-					
+
 					</tr>
 				</g:each>
 				</tbody>
