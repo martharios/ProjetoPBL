@@ -22,12 +22,13 @@ class Pessoa {
 
     static constraints = {
         nome(nullable: false, blank: false)
-        matricula(nullable: false, blank: false)
-        email(nullable: false, blank: false, email: true)
-        cpf(nullable: false )
+        matricula(nullable: false, blank: false, unique: true)
+        email(nullable: false, blank: false, email: true, unique: true)
+        cpf(nullable: false)
         senha(nullable: false, blank: false)
         perfilId(nullable: false, inList: [1,2,3])
         status(nullable: false, blank: false)
+        curso(nullable: true)
 
 
     }

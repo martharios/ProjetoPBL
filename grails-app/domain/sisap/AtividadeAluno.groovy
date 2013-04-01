@@ -12,6 +12,8 @@ class AtividadeAluno {
 
 
     static constraints = {
+        nota(nullable: true)
+        dataEntrega(nullable: true)
     }
     String toString(){
         aluno.toString()

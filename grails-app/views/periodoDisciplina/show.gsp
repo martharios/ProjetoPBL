@@ -86,7 +86,7 @@
                             <div class="formRight">
                                 
 
-                                    <span class="property-value" aria-labelledby="alunos-label"><g:link controller="pessoa" action="show" id="${periodoDisciplinaInstance?.autorCadastro?.id}">${periodoDisciplinaInstance?.autorCadastro?.encodeAsHTML()}</g:link></span> <div class="fix"></div>
+                                    <span class="property-value" aria-labelledby="alunos-label"><g:link controller="pessoa" action="show" id="${periodoDisciplinaInstance?.autorCadastro?.id}"><h4>${periodoDisciplinaInstance?.autorCadastro?.encodeAsHTML()}</h4></g:link></span> <div class="fix"></div>
 
                             </div><div class="fix"></div></div>
                     </g:if>
@@ -111,7 +111,7 @@
                             <div class="formRight">
                                 
 
-                                <span class="property-value" aria-labelledby="disciplina-label"><g:link controller="disciplina" action="show" id="${periodoDisciplinaInstance?.disciplina?.id}">${periodoDisciplinaInstance?.disciplina?.encodeAsHTML()}</g:link></span>
+                                <span class="property-value" aria-labelledby="disciplina-label"><g:link controller="disciplina" action="show" id="${periodoDisciplinaInstance?.disciplina?.id}"><h4>${periodoDisciplinaInstance?.disciplina?.encodeAsHTML()}</h4></g:link></span>
                                 
                             </div><div class="fix"></div></div>
                     </g:if>
@@ -121,8 +121,17 @@
                             <div class="formRight">
                                 
 
-                                <span class="property-value" aria-labelledby="professor-label"><g:link controller="pessoa" action="show" id="${periodoDisciplinaInstance?.professor?.id}">${periodoDisciplinaInstance?.professor?.encodeAsHTML()}</g:link></span>
+                                <span class="property-value" aria-labelledby="professor-label"><g:link controller="pessoa" action="show" id="${periodoDisciplinaInstance?.professor?.id}"><h4>${periodoDisciplinaInstance?.professor?.encodeAsHTML()}</h4></g:link></span>
                                 
+                            </div><div class="fix"></div></div>
+                    </g:if>
+                    <g:if test="${periodoDisciplinaInstance?.sala}">
+                        <div class="rowElem"><label><span id="sala-label" class="property-label"><g:message code="periodoDisciplina.sala.label" default="Sala" /></span>:</label>
+                            <div class="formRight">
+
+
+                                <span class="property-value" aria-labelledby="professor-label"><h4>${periodoDisciplinaInstance.sala}</h4></span>
+
                             </div><div class="fix"></div></div>
                     </g:if>
 
@@ -165,18 +174,35 @@
                                     </g:if>
                                 </div>
                                 <div id="tab4" class="tab_content">
-
-                                    <button id="btnCreateAtividade" class="greyishBtn" onclick="$('#divCreateAtividade').slideDown('slow');$('#btnCreateAtividade').slideUp('slow');">Adicionar Atividade</button>
-                                    <div id="divCreateAtividade" style="display: none;">
-                                        <g:render template="createAtividade" />
+                                    <div class="table">
+                                        <div class="head"><h5 class="iFrames">Atividades no Período</h5></div>
+                                        <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
+                                        <thead>
+                                            <tr>
+                                                <td>Atividade</td>
+                                                <td>Prazo</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <g:each in="${periodoDisciplinaInstance.atividadesPeriodo}" var="atividade">
+                                            <tr>
+                                                <td>${atividade?.atividade}</td>
+                                                <td>${atividade?.dataPrazo}</td>
+                                            </tr>
+                                        </g:each>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="fix"></div>
+                                    <br/>
+                                    <button id="btnCreateAtividade" class="greyishBtn" onclick="$('#divCreateAtividade').dialog({'width': 'auto',open: function(){$('#wyEditor').wysiwyg();}});">Adicionar Atividade</button>
+                                    <div id="divCreateAtividade" title="Criar Atividade" style="display: none;">
+                                        <g:render template="createAtividade" model="[idPeriodoDisciplina: periodoDisciplinaInstance?.id]" />
                                     </div>
                                 </div>
                                 <div id="tab5" class="tab_content">
                                     <div class="widgets">
-
-
-
-                                            <div class="widget"><!-- Pie chart 2 -->
+                                              <div class="widget"><!-- Pie chart 2 -->
                                                 <div class="head"><h5 class="iChart8">Gráficos</h5></div>
                                                 <div class="body">
                                                     <div id="pie" class="pieWidget"></div>

@@ -44,14 +44,7 @@ class DisciplinaController {
 
 
         def disciplinaInstance = new Disciplina(params)
-        def disciplina2
-        (1..20000).each {
-            disciplina2 = new Disciplina()
-            disciplina2.codigo = it
-            disciplina2.nome = "testewwwww$it"
-            disciplina2.descricao = "testewwww$it"
-            disciplina2.save()
-        }
+
         if (!disciplinaInstance.save(flush: true)) {
             render(view: "create", model: [disciplinaInstance: disciplinaInstance])
             return
