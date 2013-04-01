@@ -23,11 +23,7 @@
     <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/wysiwyg', file:  'wysiwyg.link.js')}"></script>
     <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/wysiwyg', file:  'wysiwyg.table.js')}"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.orderBars.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.pie.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'excanvas.min.js')}"></script>
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.resize.js')}"></script>
+
 
     <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/tables', file:  'jquery.dataTables.js')}"></script>
     <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/tables', file:  'colResizable.min.js')}"></script>
@@ -70,7 +66,7 @@
 
     <script type="text/javascript" src="${createLinkTo(dir: 'js', file:  'custom.js')}"></script>
 
-    <script type="text/javascript" src="${createLinkTo(dir: 'js/charts', file:  'chart.js')}"></script>
+
 
     <g:layoutHead/>
 		<r:layoutResources />

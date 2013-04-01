@@ -1,10 +1,13 @@
 	$(function () {
 		var data = [];
-		var series = Math.floor(Math.random()*10)+1;
-		for( var i = 0; i<series; i++)
-		{
-			data[i] = { label: "Series"+(i+1), data: Math.floor(Math.random()*100)+1 }
-		}
+//		var series = Math.floor(Math.random()*10)+1;
+//		for( var i = 0; i<series; i++)
+//		{
+//			data[i] = { label: "Series"+(i+1), data: Math.floor(Math.random()*100)+1 }
+//		}
+        data[0] = {label: 'Teste', data: 0.5}
+        data[1] = {label: 'Teste2', data: 0.3}
+        data[2] = {label: 'Teste2', data: 0.2}
 	
 	$.plot($("#pie"), data, 
 	{

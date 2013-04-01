@@ -19,7 +19,7 @@
         <h1>404</h1>
         <span class="bubbles"></span>
         <p>A página solicitada não foi encontrada!</p>
-        <div class="backToDash"><g:link controller="login" action="index" class="seaBtn button">Voltar</g:link> </div>
+        <div class="backToDash"><button class="seaBtn button" onclick="history.back()">Voltar</button></div>
     </div>
 </div>
 </body>

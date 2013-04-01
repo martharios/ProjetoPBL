@@ -62,8 +62,10 @@
     <span class="required-indicator">*</span>
 </label><div class="formRight">
     <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'perfilId', 'error')} required">
+        <div class="formRight noSearch">
+            <g:select class="chzn-select" name="perfilId" from="${br.edu.unime.util.Perfil.mapPerfil}" optionKey="key" optionValue="value" value="${fieldValue(bean: pessoaInstance, field: 'perfilId')}" valueMessagePrefix="pessoa.perfilId"/>
+        </div>
 
-        <g:select name="perfilId" from="${br.edu.unime.util.Perfil.mapPerfil}" optionKey="key" optionValue="value" value="${fieldValue(bean: pessoaInstance, field: 'perfilId')}" valueMessagePrefix="pessoa.perfilId"/>
     </div>
 </div><div class="fix"></div></div>
 
@@ -99,5 +101,13 @@
         <g:textField name="telefoneCelular" value="${pessoaInstance?.telefoneCelular}"/>
     </div>
 </div><div class="fix"></div></div>
+
+<div class="rowElem">
+                        <label>Curso:</label>
+                        <div class="formRight searchDrop">
+                        <g:select name="curso.id" from="${sisap.Curso.listOrderByNome()}" optionKey="id" optionValue="nome" class="chzn-select" style="width:350px;" data-placeholder="Choose a Country..." />
+
+                        </div>
+                        <div class="fix"></div>
 
 

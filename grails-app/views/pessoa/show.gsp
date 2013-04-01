@@ -139,6 +139,14 @@
                                 
                             </div><div class="fix"></div></div>
                     </g:if>
+                    <g:if test="${pessoaInstance?.curso}">
+                        <div class="rowElem"><label><span id="status-label" class="property-label"><g:message code="pessoa.curso.label" default="Curso" /></span>:</label>
+                            <div class="formRight">
+
+                                <span class="property-value" aria-labelledby="status-label"><g:textField name="c151513" readonly="readonly" value="${pessoaInstance?.curso}" /></span>
+
+                            </div><div class="fix"></div></div>
+                    </g:if>
                     <div class="fix"></div>
                 </div>
             </fieldset>

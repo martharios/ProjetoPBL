@@ -21,5 +21,8 @@ class PeriodoDisciplina {
 
     static constraints = {
     }
+    static mapping = {
+        alunos sort: 'nome'
+    }
 
 }

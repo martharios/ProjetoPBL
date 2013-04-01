@@ -1,11 +1,27 @@
 
-<%@ page import="sisap.PeriodoDisciplina" %>
+<%@ page import="sisap.Pessoa; sisap.PeriodoDisciplina" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'periodoDisciplina.label', default: 'PeriodoDisciplina')}" />
     <title><g:message code="default.show.label" args="[entityName]" /></title>
+
+
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/charts', file: 'pie.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/charts', file: 'bar.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/charts', file: 'auto.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/charts', file: 'hBar.js')}"></script>
+
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/charts', file:  'chart.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.orderBars.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.pie.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'excanvas.min.js')}"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/flot', file:  'jquery.flot.resize.js')}"></script>
+
+
+
 </head>
 <body>
 <div class="wrapper">
@@ -74,18 +90,8 @@
 
                             </div><div class="fix"></div></div>
                     </g:if>
-                    <g:if test="${periodoDisciplinaInstance?.alunos}">
-                        <div class="rowElem"><label><span id="alunos-label" class="property-label"><g:message code="periodoDisciplina.alunos.label" default="Alunos" /></span>:</label>
-                            <div class="formRight">
 
 
-                                <g:each in="${periodoDisciplinaInstance.alunos}" var="a">
-                                    <span class="property-value" aria-labelledby="alunos-label"><g:link controller="pessoa" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span> <div class="fix"></div>
-                                </g:each>
-
-                            </div><div class="fix"></div></div>
-                    </g:if>
-                    
 
                     
                     <g:if test="${periodoDisciplinaInstance?.atividadesPeriodo}">
@@ -119,6 +125,72 @@
                                 
                             </div><div class="fix"></div></div>
                     </g:if>
+
+                    <div class="rowElem">
+                        <h4 class="red pt10">Detalhes</h4>
+                        <div class="widget">
+                            <ul class="tabs">
+                                <li><a href="#tab3">Alunos</a></li>
+                                <li><a href="#tab4">Atividades</a></li>
+                                <li><a href="#tab5">Estatísticas</a></li>
+                            </ul>
+
+                            <div class="tab_container">
+                                <div id="tab3" class="tab_content">
+                                    <h4 class="aligncenter red pt10">Alunos Associados a esta disciplina em ${periodoDisciplinaInstance.periodo}</h4>
+                                    <g:if test="${periodoDisciplinaInstance?.alunos}">
+
+                                            <div class="formRight" style="width: 100%;">
+
+                                                <div class="table">
+                                                    <div class="head"><h5 class="iFrames">Alunos: ${periodoDisciplinaInstance.alunos.size()}</h5></div>
+                                                    <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
+                                                        <thead>
+                                                        <td>Nome</td>
+                                                        <td>Email</td>
+                                                        </thead>
+                                                        <tbody>
+                                                        <g:each in="${periodoDisciplinaInstance.alunos}" var="a" status="i">
+                                                            <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                                                                <td><g:link controller="pessoa" action="show" id="${a.id}">${a.nome}</g:link> </td>
+                                                                <td>${a?.email}</td>
+                                                            </tr>
+
+                                                        </g:each>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div><div class="fix"></div>
+                                    </g:if>
+                                </div>
+                                <div id="tab4" class="tab_content">
+
+                                    <button id="btnCreateAtividade" class="greyishBtn" onclick="$('#divCreateAtividade').slideDown('slow');$('#btnCreateAtividade').slideUp('slow');">Adicionar Atividade</button>
+                                    <div id="divCreateAtividade" style="display: none;">
+                                        <g:render template="createAtividade" />
+                                    </div>
+                                </div>
+                                <div id="tab5" class="tab_content">
+                                    <div class="widgets">
+
+
+
+                                            <div class="widget"><!-- Pie chart 2 -->
+                                                <div class="head"><h5 class="iChart8">Gráficos</h5></div>
+                                                <div class="body">
+                                                    <div id="pie" class="pieWidget"></div>
+                                                </div>
+                                            </div>
+
+                                        <div class="fix"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="fix"></div>
+                        </div>
+                    </div>
 
                     <div class="fix"></div>
                 </div>

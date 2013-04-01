@@ -13,8 +13,9 @@ class Pessoa {
     Integer perfilId
     String telefoneCelular
     Boolean status
-    String getPerfil(){ return Perfil.getPerfilByKey(perfilId)}
 
+    String getPerfil(){ return Perfil.getPerfilByKey(perfilId)}
+    static belongsTo = [curso: Curso]
     static transients = ['perfil']
 
 
@@ -30,7 +31,14 @@ class Pessoa {
 
 
     }
+
+    @Override
     String toString(){
         return nome +" - " + Perfil.getPerfilByKey(perfilId)
+    }
+
+    @Override
+    boolean equals(obj){
+        return obj?.id==id ? true:false
     }
 }

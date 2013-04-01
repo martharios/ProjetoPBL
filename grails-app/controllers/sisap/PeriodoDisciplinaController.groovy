@@ -46,6 +46,16 @@ class PeriodoDisciplinaController {
 
        render(template: 'listProfessores', model: [professores: professores, professoresTotal: professoresTotal])
     }
+    def ajaxPesquisaAlunos(Integer max){
+        if (params.idCurso){
+            def curso = Curso.read(params.idCurso)
+            def alunos = Pessoa.findAllByCursoAndStatus(curso, true)
+            render g.select(id: "box1View", name: "box1View", multiple: "multiple", class: "multiple", style: "height: 250px", from: alunos, optionKey: "id", optionValue: "nome")
+        }else{
+            render g.select(id: "box1View", name: "box1View", multiple: "multiple", class: "multiple", style: "height: 250px", from: ['':''], optionKey: "key", optionValue: "value")
+        }
+
+    }
     def ajaxPesquisaDisciplina(Integer max){
         params.max = Math.min(max ?: 5, 100)
         def disciplinas = Disciplina.withCriteria(max: params.max, offset: params.offset) {
@@ -114,10 +124,18 @@ class PeriodoDisciplinaController {
         periodoDisciplinaInstance.disciplina = Disciplina.read(params.disciplina)
         periodoDisciplinaInstance.professor = Pessoa.read(params.professor)
         periodoDisciplinaInstance.ano = Integer.parseInt(params.ano)
+        periodoDisciplinaInstance.sala = Integer.parseInt(params.sala)
         periodoDisciplinaInstance.semestre = Integer.parseInt(params.semestre)
         periodoDisciplinaInstance.autorCadastro=Pessoa.read(session.idPessoa)
 
+        def listId = []
+        params.alunos.each {listId << Integer.parseInt(it)}
+
+        periodoDisciplinaInstance.alunos = Pessoa.findAllByIdInList(listId)
+
+
         if (!periodoDisciplinaInstance.save(flush: true)) {
+            println periodoDisciplinaInstance.errors
             render(view: "passo1", model: [periodoDisciplinaInstance: periodoDisciplinaInstance])
             return
         }
@@ -135,6 +153,9 @@ class PeriodoDisciplinaController {
         }
 
         [periodoDisciplinaInstance: periodoDisciplinaInstance]
+    }
+    def createAtividade = {
+        render(template: 'createAtividade')
     }
 
     def edit(Long id) {
