@@ -108,6 +108,8 @@ class PeriodoDisciplinaController {
         render(view:  'passo1', model: [professores: professores, professoresTotal: professoresTotal, matricula: params.matricula, nome: params.nome, email: params.email])
         return
     }
+
+
     def passo2 = {
 
 
@@ -142,6 +144,33 @@ class PeriodoDisciplinaController {
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'periodoDisciplina.label', default: 'PeriodoDisciplina'), periodoDisciplinaInstance.id])
         redirect(action: "show", id: periodoDisciplinaInstance.id)
+    }
+
+    def saveAtividade = {
+        println params
+        def atividade = new Atividade()
+        atividade.nome = params.nome
+        atividade.descricao= params.descricao
+
+        def atividadePeriodo
+        def periodoDisciplina= PeriodoDisciplina.get(params.idPeriodoDisciplina)
+
+
+        if (atividade.save(flush:  true)){
+            atividadePeriodo = new AtividadePeriodo()
+            atividadePeriodo.atividade = atividade
+            atividadePeriodo.dataCriacao = new Date()
+            atividadePeriodo.dataPrazo = Date.parse("dd-MM-yyyy", params.prazo)
+
+            if (atividadePeriodo.save(flush: true)){
+                periodoDisciplina.addToAtividadesPeriodo(atividadePeriodo)
+                if (periodoDisciplina.save(flush:  true)){
+                    redirect(action: 'show', id: periodoDisciplina.id)
+                }
+            }
+        }
+
+
     }
 
     def show(Long id) {

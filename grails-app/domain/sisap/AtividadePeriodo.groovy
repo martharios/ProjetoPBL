@@ -11,6 +11,7 @@ class AtividadePeriodo {
 
 
     static constraints = {
+        atividadesAluno(nullable: true)
     }
     String toString(){
     }

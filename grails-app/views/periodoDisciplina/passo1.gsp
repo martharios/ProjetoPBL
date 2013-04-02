@@ -97,9 +97,9 @@
         <div class="rowElem dualBoxes">
                     	<div class="floatleft w40">
                             <input type="text" id="box1Filter" class="boxFilter" placeholder="Procurar Aluno..." /><button type="button" id="box1Clear" class="dualBtn fltr">x</button><br />
-                            <div class="boxFilter noSearch">
+                            <div class="boxFilter searchDrop">
 
-                            <g:select noSelection="['':'Selecione']" onchange="${remoteFunction(action: 'ajaxPesquisaAlunos', update: 'divBoxView', params: " 'idCurso=' + \$(this).val()  ", onLoading: " \$('#loaderCurso').show() ", onComplete: " \$('#loaderCurso').hide() ")}" class="chzn-select" name="cursoSearch" from="${sisap.Curso.listOrderByNome()}" optionKey="id" optionValue="nome"/>
+                            <g:select noSelection="['':'Selecione o Curso']" onchange="${remoteFunction(action: 'ajaxPesquisaAlunos', update: 'divBoxView', params: " 'idCurso=' + \$(this).val()  ", onLoading: " \$('#loaderCurso').show() ", onComplete: " \$('#loaderCurso').hide() ")}" class="chzn-select" name="cursoSearch" from="${sisap.Curso.listOrderByNome()}" optionKey="id" optionValue="nome"/>
                             <div id="loaderCurso"  style="display: none;">
                                 <img src="${createLinkTo(dir: 'images/loaders', file: 'loader.gif')}" alt="" class="p12 floatleft"   /> Carregando alunos...
                             </div>

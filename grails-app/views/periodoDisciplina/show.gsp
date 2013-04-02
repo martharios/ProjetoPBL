@@ -58,15 +58,15 @@
                 </div>
             </div>
         </g:if>
-        <div class="middleNav">
-            <g:form name="formShow" method="POST"  action="delete">
-                <g:hiddenField name="id" value="${periodoDisciplinaInstance.id}" />
-                <ul>
-                    <li class="iEdit"><g:link id="${periodoDisciplinaInstance.id}" action="edit"><span><g:message code="default.edit.label" args="[entityName]" /></span></g:link> </li>
-                    <li class="iDelete"><a href="#" onclick="jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'periodoDisciplina.label', default: 'PeriodoDisciplina')}?', 'Confirmação', function(e){if(e){$('form#formShow').submit();}});"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></a></li>
-                </ul>
-            </g:form>
-        </div>
+        %{--<div class="middleNav">--}%
+            %{--<g:form name="formShow" method="POST"  action="delete">--}%
+                %{--<g:hiddenField name="id" value="${periodoDisciplinaInstance.id}" />--}%
+                %{--<ul>--}%
+                    %{--<li class="iEdit"><g:link id="${periodoDisciplinaInstance.id}" action="edit"><span><g:message code="default.edit.label" args="[entityName]" /></span></g:link> </li>--}%
+                    %{--<li class="iDelete"><a href="#" onclick="jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'periodoDisciplina.label', default: 'PeriodoDisciplina')}?', 'Confirmação', function(e){if(e){$('form#formShow').submit();}});"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></a></li>--}%
+                %{--</ul>--}%
+            %{--</g:form>--}%
+        %{--</div>--}%
         <div class="fix"></div>
         <div class="mainForm">
             <fieldset>
@@ -91,21 +91,6 @@
                             </div><div class="fix"></div></div>
                     </g:if>
 
-
-
-                    
-                    <g:if test="${periodoDisciplinaInstance?.atividadesPeriodo}">
-                        <div class="rowElem"><label><span id="atividadesPeriodo-label" class="property-label"><g:message code="periodoDisciplina.atividadesPeriodo.label" default="Atividades Periodo" /></span>:</label>
-                            <div class="formRight">
-                                
-
-                                <g:each in="${periodoDisciplinaInstance.atividadesPeriodo}" var="a">
-                                    <span class="property-value" aria-labelledby="atividadesPeriodo-label"><g:link controller="atividadeAluno" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span> <div class="fix"></div>
-                                </g:each>
-                                
-                            </div><div class="fix"></div></div>
-                    </g:if>
-                    
                     <g:if test="${periodoDisciplinaInstance?.disciplina}">
                         <div class="rowElem"><label><span id="disciplina-label" class="property-label"><g:message code="periodoDisciplina.disciplina.label" default="Disciplina" /></span>:</label>
                             <div class="formRight">
@@ -185,9 +170,12 @@
                                         </thead>
                                         <tbody>
                                         <g:each in="${periodoDisciplinaInstance.atividadesPeriodo}" var="atividade">
+                                            <tr style="cursor: pointer;" onclick="$('#tdAtividade${atividade?.id}').is(':visible') ? $('#tdAtividade${atividade?.id}').hide():$('#tdAtividade${atividade?.id}').show();">
+                                                <td >${atividade?.atividade.nome}</td>
+                                                <td><g:formatDate date="${atividade?.dataPrazo}" format="dd/MM/yyyy" /> </td>
+                                            </tr>
                                             <tr>
-                                                <td>${atividade?.atividade}</td>
-                                                <td>${atividade?.dataPrazo}</td>
+                                                <td style="display: none;" colspan="2" id="tdAtividade${atividade?.id}"><span id="divDetalhesAtividade${atividade?.id}">${atividade.atividade.descricao}</span></td>
                                             </tr>
                                         </g:each>
                                         </tbody>

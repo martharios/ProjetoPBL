@@ -9,6 +9,6 @@ class Atividade {
     static constraints = {
     }
     String toString(){
-        return id.toString() + nome
+        return nome
     }
 }
