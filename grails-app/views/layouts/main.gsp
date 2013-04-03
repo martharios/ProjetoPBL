@@ -10,6 +10,14 @@
 
     <link href="${createLinkTo(dir: 'css', file:  'main.css')}" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css' />
+    <style type="text/css">
+    @font-face {
+        font-family: 'Cuprum';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Cuprum'), local('Cuprum-Regular'), url("${createLinkTo(dir: 'css', file: 'sp1_LTSOMWWV0K5VTuZzvQ.woff')}") format('woff');
+    }
+    </style>
 
     <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery-1.8.1.js')}"></script>
 
