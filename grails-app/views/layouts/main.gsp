@@ -11,12 +11,13 @@
     <link href="${createLinkTo(dir: 'css', file:  'main.css')}" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css' />
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery-1.8.1.js')}"></script>
+
 
     <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/spinner', file:  'jquery.mousewheel.js')}"></script>
     <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/spinner', file:  'ui.spinner.js')}"></script>
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="${createLinkTo(dir: 'js', file: 'jquery-ui.min.js')}"></script>
 
     <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/wysiwyg', file:  'jquery.wysiwyg.js')}"></script>
     <script type="text/javascript" src="${createLinkTo(dir: 'js/plugins/wysiwyg', file:  'wysiwyg.image.js')}"></script>
