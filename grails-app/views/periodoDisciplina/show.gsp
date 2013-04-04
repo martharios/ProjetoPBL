@@ -124,13 +124,14 @@
                         <h4 class="red pt10">Detalhes</h4>
                         <div class="widget">
                             <ul class="tabs">
-                                <li><a href="#tab3">Alunos</a></li>
+                                <li><a href="#tab2">Alunos</a></li>
+                                <li><a href="#tab3">Grupos</a></li>
                                 <li><a href="#tab4">Atividades</a></li>
                                 <li><a href="#tab5">Estatísticas</a></li>
                             </ul>
 
                             <div class="tab_container">
-                                <div id="tab3" class="tab_content">
+                                <div id="tab2" class="tab_content">
                                     <h4 class="aligncenter red pt10">Alunos Associados a esta disciplina em ${periodoDisciplinaInstance.periodo}</h4>
                                     <g:if test="${periodoDisciplinaInstance?.alunos}">
 
@@ -157,6 +158,11 @@
 
                                             </div><div class="fix"></div>
                                     </g:if>
+                                </div>
+                                <div id="tab3" class="tab_content">
+
+                                        <g:render template="grupos" model="[periodoDisciplina: periodoDisciplinaInstance]"  />
+                                        <div class="fix"></div>
                                 </div>
                                 <div id="tab4" class="tab_content">
                                     <div class="table">
@@ -200,6 +206,7 @@
                                         <div class="fix"></div>
                                     </div>
                                 </div>
+
 
                             </div>
                             <div class="fix"></div>

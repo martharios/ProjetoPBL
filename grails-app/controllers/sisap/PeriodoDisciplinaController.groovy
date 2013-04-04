@@ -172,6 +172,33 @@ class PeriodoDisciplinaController {
 
 
     }
+    def saveGrupo = {
+        println params
+        def alunos = []
+        params?.checkAluno.each {
+             alunos << Pessoa.read(it)
+        }
+        def periodoDisciplina = PeriodoDisciplina.get(params.idPeriodoDisciplina)
+
+        def grupo = new Grupo()
+        grupo.alunos = alunos
+        grupo.nome = params.nome
+        grupo.cor = params.colorpickerField
+
+        if (grupo.save(flush:  true)){
+            periodoDisciplina.addToGrupos(grupo)
+            if (periodoDisciplina.save(flush:  true)){
+                flash.message = "Grupo $grupo.nome adicionado!"
+                redirect(action: 'show', id: periodoDisciplina.id)
+            }else{
+                println periodoDisciplina.errors
+            }
+        }else{
+            println grupo.errors
+        }
+
+
+    }
 
     def show(Long id) {
         def periodoDisciplinaInstance = PeriodoDisciplina.get(id)

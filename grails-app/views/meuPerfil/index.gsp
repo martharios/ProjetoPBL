@@ -60,12 +60,36 @@
                 <div class="widget first">
                     <div class="head"><h5 class="iList">Minhas informações</h5></div>
 
-                    <g:if test="${pessoaInstance?.usuario}">
-                        <div class="rowElem"><label><span id="usuario-label" class="property-label"><g:message code="pessoa.usuario.label" default="Usuario" /></span>:</label>
+                    <g:if test="${pessoaInstance?.nome}">
+                        <div class="rowElem"><label><span id="nome-label" class="property-label"><g:message code="pessoa.nome.label" default="Nome" /></span>:</label>
                             <div class="formRight">
 
+                                <span class="property-value" aria-labelledby="nome-label"><g:textField readonly="readonly" name="${pessoaInstance}" value="${pessoaInstance.nome}" /></span>
 
-                                <span class="property-value" aria-labelledby="usuario-label"><g:link controller="usuario" action="show" id="${pessoaInstance?.usuario?.id.toString()}">${pessoaInstance?.usuario.login}</g:link></span>
+                            </div><div class="fix"></div></div>
+                    </g:if>
+                    <g:if test="${pessoaInstance?.matricula}">
+                        <div class="rowElem"><label><span id="email-label" class="property-label"><g:message code="pessoa.matricula.label" default="Matrícula" /></span>:</label>
+                            <div class="formRight">
+
+                                <span class="property-value" aria-labelledby="email-label"><g:textField readonly="readonly" name="${pessoaInstance}" value="${pessoaInstance.matricula}" /></span>
+
+                            </div><div class="fix"></div></div>
+                    </g:if>
+
+                    <g:if test="${pessoaInstance?.rg}">
+                        <div class="rowElem"><label><span id="telefoneCelular-label" class="property-label"><g:message code="pessoa.rg.label" default="RG" /></span>:</label>
+                            <div class="formRight">
+
+                                <span class="property-value" aria-labelledby="telefoneCelular-label"><g:textField readonly="readonly" name="${pessoaInstance}" value="${pessoaInstance.rg}" /></span>
+
+                            </div><div class="fix"></div></div>
+                    </g:if>
+                    <g:if test="${pessoaInstance?.cpf}">
+                        <div class="rowElem"><label><span id="telefoneCelular-label" class="property-label"><g:message code="pessoa.cpf.label" default="CPF" /></span>:</label>
+                            <div class="formRight">
+
+                                <span class="property-value" aria-labelledby="telefoneCelular-label"><g:textField readonly="readonly" name="${pessoaInstance}" value="${pessoaInstance.cpf}" /></span>
 
                             </div><div class="fix"></div></div>
                     </g:if>
@@ -78,27 +102,23 @@
 
                             </div><div class="fix"></div></div>
                     </g:if>
-
-                    <g:if test="${pessoaInstance?.nome}">
-                        <div class="rowElem"><label><span id="nome-label" class="property-label"><g:message code="pessoa.nome.label" default="Nome" /></span>:</label>
+                    <g:if test="${pessoaInstance?.perfilId}">
+                        <div class="rowElem"><label><span id="email-label" class="property-label"><g:message code="pessoa.perfil.label" default="Perfil" /></span>:</label>
                             <div class="formRight">
 
-                                <span class="property-value" aria-labelledby="nome-label"><g:textField readonly="readonly" name="${pessoaInstance}" value="${pessoaInstance.nome}" /></span>
+                                <span class="property-value" aria-labelledby="email-label"><g:textField readonly="readonly" name="${pessoaInstance}" value="${pessoaInstance.perfil}" /></span>
+
+                            </div><div class="fix"></div></div>
+                    </g:if>
+                    <g:if test="${pessoaInstance?.curso}">
+                        <div class="rowElem"><label><span id="email-label" class="property-label"><g:message code="pessoa.curso.label" default="Curso" /></span>:</label>
+                            <div class="formRight">
+
+                                <span class="property-value" aria-labelledby="email-label"><g:textField readonly="readonly" name="${pessoaInstance}" value="${pessoaInstance.curso}" /></span>
 
                             </div><div class="fix"></div></div>
                     </g:if>
 
-                    <g:if test="${pessoaInstance?.perfis}">
-                        <div class="rowElem"><label><span id="perfis-label" class="property-label"><g:message code="pessoa.perfis.label" default="Perfis" /></span>:</label>
-                            <div class="formRight">
-
-
-                                <g:each in="${pessoaInstance.perfis}" var="p">
-                                    <span class="property-value" aria-labelledby="perfis-label"><g:link controller="perfil" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></span> <div class="fix"></div>
-                                </g:each>
-
-                            </div><div class="fix"></div></div>
-                    </g:if>
 
                     <g:if test="${pessoaInstance?.telefoneCelular}">
                         <div class="rowElem"><label><span id="telefoneCelular-label" class="property-label"><g:message code="pessoa.telefoneCelular.label" default="Telefone Celular" /></span>:</label>
@@ -108,6 +128,9 @@
 
                             </div><div class="fix"></div></div>
                     </g:if>
+
+
+
                     <div class="rowElem"><label><span  class="property-label">
                         <g:remoteLink action="ajaxAlterarSenha" id="${pessoaInstance?.id}" update="divAlterarSenha">
                             <button id="alterarSenha" onclick="showHideAlterarSenha();" class="greyishBtn">Alterar Senha</button>
