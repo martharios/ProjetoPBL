@@ -6,6 +6,7 @@ class DisciplinaController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def mailService
+    def mensagemService
     def index() {
 
         redirect(action: "list", params: params)

@@ -39,9 +39,7 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
-        // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
-
-        // runtime 'mysql:mysql-connector-java:5.1.20'
+        runtime 'com.github.groovy-wslite:groovy-wslite:0.7.2'
     }
 
     plugins {

@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="loginWrapper">
-    <div class="loginLogo"><img src="${createLinkTo(dir: 'images', file: 'loginLogo.png')}" alt="" /></div>
+    <div class="loginLogo"><img src="${createLinkTo(dir: 'images', file: 'GRAILS_LOGO.png')}" alt="" /></div>
     <g:if test="${flash.message}">
         <div class="nNote nFailure hideit">
             <p><strong>Erro: </strong>${flash.message}</p>

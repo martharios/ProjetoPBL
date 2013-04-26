@@ -1,6 +1,6 @@
 <!-- Header -->
 <div id="header" class="wrapper">
-    <div class="logo"><a href="/" title=""><img src="${createLinkTo(dir: 'images', file: 'loginLogo.png')}" alt="" /></a></div>
+    <div class="logo"><a href="/" title=""><img src="${createLinkTo(dir: 'images', file: 'GRAILS_LOGO.png')}" alt="" /></a></div>
     <div class="middleNav">
         <ul>
             <li class="iMes"><a href="#" title=""><span>Support tickets</span></a><span class="numberMiddle">9</span></li>

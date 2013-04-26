@@ -122,6 +122,9 @@ class PeriodoDisciplinaController {
     }
 
     def save() {
+
+        println params
+        return
         def periodoDisciplinaInstance = new PeriodoDisciplina()
         periodoDisciplinaInstance.disciplina = Disciplina.read(params.disciplina)
         periodoDisciplinaInstance.professor = Pessoa.read(params.professor)

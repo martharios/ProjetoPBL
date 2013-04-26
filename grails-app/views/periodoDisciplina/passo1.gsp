@@ -1,4 +1,4 @@
-<%@ page import="sisap.PeriodoDisciplina" %>
+<%@ page import="java.text.SimpleDateFormat; sisap.PeriodoDisciplina" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,20 +31,31 @@
 <div class="content">
 <div class="title"><h5>Cadastrar Disciplina em Período</h5></div>
 
-    <g:form id="nextPasso2" name="nextPasso2" action="save" class="mainForm" onsubmit="\$('#box2View').find('option').attr('selected',true);">
+    <g:form id="nextPasso2" name="nextPasso2" action="save" class="mainForm" onsubmit="\$('#box2View').find('option').attr('selected',true);alert(\$('#s4').find('li').id)">
     <fieldset class="form" >
         <div class="widget first">
             <div class="head"><h5 class="iList">Período</h5></div>
+             <div class="rowElem"><label>Período:</label>
+                        <div class="formRight">
+                            <ul id="s4">
+                                <g:each in="${((Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))).. (Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))+1) )}" var="ano">
+                                    <g:each in="${[1,2]}" var="semestre">
+                                        <li id="${ano}.${semestre}">${ano}.${semestre}</li>
+                                    </g:each>
+                                </g:each>
+                            </ul>
+                        </div>
+                        <div class="fix"></div>
+                    </div>
+             %{--<div class="rowElem"><label for="ano">--}%
+                %{--<g:message code="periodoDisciplina.ano.label" default="Ano" />--}%
 
-             <div class="rowElem"><label for="ano">
-                <g:message code="periodoDisciplina.ano.label" default="Ano" />
+            %{--</label><div class="formRight">--}%
+                %{--<div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'ano', 'error')} ">--}%
 
-            </label><div class="formRight">
-                <div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'ano', 'error')} ">
-
-                    <g:textField name="ano" value="${periodoDisciplinaInstance?.ano}"/>
-                </div>
-            </div><div class="fix"></div></div>
+                    %{--<g:textField name="ano" value="${periodoDisciplinaInstance?.ano}"/>--}%
+                %{--</div>--}%
+            %{--</div><div class="fix"></div></div>--}%
         <div class="rowElem"><label for="sala">
             <g:message code="periodoDisciplina.sala.label" default="Sala" />
 
@@ -55,15 +66,15 @@
             </div>
         </div><div class="fix"></div></div>
 
-            <div class="rowElem"><label for="semestre">
-                <g:message code="periodoDisciplina.semestre.label" default="Semestre" />
+            %{--<div class="rowElem"><label for="semestre">--}%
+                %{--<g:message code="periodoDisciplina.semestre.label" default="Semestre" />--}%
 
-            </label><div class="formRight">
-                <div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'semestre', 'error')} ">
+            %{--</label><div class="formRight">--}%
+                %{--<div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'semestre', 'error')} ">--}%
 
-                    <g:textField name="semestre" value="${periodoDisciplinaInstance?.semestre}"/>
-                </div>
-            </div><div class="fix"></div></div>
+                    %{--<g:textField name="semestre" value="${periodoDisciplinaInstance?.semestre}"/>--}%
+                %{--</div>--}%
+            %{--</div><div class="fix"></div></div>--}%
         <div class="rowElem"><label for="semestre">
                 Professor
             </label><div class="formRight">
