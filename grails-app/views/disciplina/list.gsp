@@ -49,11 +49,17 @@
 				<g:each in="${disciplinaInstanceList}" status="i" var="disciplinaInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${disciplinaInstance.id}">${fieldValue(bean: disciplinaInstance, field: "codigo")}</g:link></td>
+						%{--<td><g:link action="show" id="${disciplinaInstance.id}">${fieldValue(bean: disciplinaInstance, field: "codigo")}</g:link></td>--}%
 
-                        <td>${fieldValue(bean: disciplinaInstance, field: "nome")}</td>
+                        <td>${disciplinaInstance.codigo}</td>
 
-                        <td>${fieldValue(bean: disciplinaInstance, field: "descricao")}</td>
+                        <td>${disciplinaInstance.nome}</td>
+
+                        <td>${disciplinaInstance.descricao}</td>
+
+                        %{--<td>${fieldValue(bean: disciplinaInstance, field: "nome")}</td>--}%
+
+                        %{--<td>${fieldValue(bean: disciplinaInstance, field: "descricao")}</td>--}%
 					
 
 					

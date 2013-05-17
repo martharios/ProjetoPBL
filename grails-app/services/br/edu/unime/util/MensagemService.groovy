@@ -13,7 +13,7 @@ class MensagemService {
         def response
         try {
             //Associando a URL do webservice ao objeto cliente soapClient
-            soapClient.serviceURL = "http://localhost:8586/SISAP/services/sendMail?wsdl"
+            soapClient.serviceURL = "http://localhost:8080/SISAP/services/sendMail?wsdl"
 
             //Definindo um retorno à resposta enviada ao WEBSERVICE
             response = soapClient.send() {
@@ -25,8 +25,9 @@ class MensagemService {
                     //Método do webservice a fazer a chamada
                     calcula("xmlns:util":"http://util.unime.edu.br/"){
 
-                        numero1(n1)
-                        numero2(n2)
+                        mkp.yieldUnescaped "<util:numero1>2</util:numero1>"
+                        mkp.yieldUnescaped "<util:numero2>2</util:numero2>"
+
 
                     }
                 }
