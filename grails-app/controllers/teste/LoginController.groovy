@@ -8,8 +8,10 @@ class LoginController {
     def index() {
         if (session.auth){
             render(view: '/index')
+            return
         }else{
             render(view: 'loginPage')
+            return
         }
 
     }
