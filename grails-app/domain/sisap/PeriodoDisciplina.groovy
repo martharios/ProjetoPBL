@@ -23,6 +23,4 @@ class PeriodoDisciplina {
         alunos sort: 'nome'
     }
 
-
-
 }

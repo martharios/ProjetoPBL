@@ -41,7 +41,7 @@
 </label><div class="formRight">
     <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'cpf', 'error')} required">
 
-        <g:textField name="cpf" required="" value="${pessoaInstance?.cpf}"/>
+        <g:cpf name="cpf" required="" value="${pessoaInstance?.cpf}"/>
     </div>
 </div><div class="fix"></div></div>
 
@@ -52,7 +52,7 @@
 </label><div class="formRight">
     <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'senha', 'error')} required">
 
-        <g:textField name="senha" required="" value="${pessoaInstance?.senha}"/>
+        <g:passwordField name="senha" required="" value="${pessoaInstance?.senha}"/>
     </div>
 </div><div class="fix"></div></div>
 
@@ -102,13 +102,12 @@
     </div>
 </div><div class="fix"></div></div>
 
-                        <div class="rowElem">
+<div class="rowElem">
                         <label>Curso:</label>
                         <div class="formRight searchDrop">
                         <g:select name="curso.id" noSelection="${[null:'Selecione um Curso']}" from="${sisap.Curso.listOrderByNome()}" optionKey="id" optionValue="nome" class="chzn-select" style="width:350px;" data-placeholder="Selecione um Curso..." />
 
                         </div>
                         <div class="fix"></div>
-                        </div>
 
 

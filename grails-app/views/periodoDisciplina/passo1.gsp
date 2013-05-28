@@ -31,38 +31,31 @@
 <div class="content">
 <div class="title"><h5>Cadastrar Disciplina em Período</h5></div>
 
-    <g:form id="nextPasso2" name="nextPasso2" action="save" class="mainForm" onsubmit="\$('#box2View').find('option').attr('selected',true);)">
+    <g:form id="nextPasso2" name="nextPasso2" action="save" class="mainForm" onsubmit="\$('#box2View').find('option').attr('selected',true);alert(\$('#s4').find('li').id)">
     <fieldset class="form" >
         <div class="widget first">
             <div class="head"><h5 class="iList">Período</h5></div>
-             %{--<div class="rowElem"><label>Período:</label>--}%
-                        %{--<div class="formRight">--}%
-                            %{--<ul id="s4">--}%
-                                %{--<g:each in="${((Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))).. (Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))+1) )}" var="ano">--}%
-                                    %{--<g:each in="${[1,2]}" var="semestre">--}%
-                                        %{--<li id="${ano}.${semestre}">${ano}.${semestre}</li>--}%
-                                    %{--</g:each>--}%
-                                %{--</g:each>--}%
-                            %{--</ul>--}%
-                        %{--</div>--}%
-                        %{--<div class="fix"></div>--}%
-                    %{--</div>--}%
-        <div class="rowElem">
-            <label>Período:</label>
-            <div class="formRight searchDrop">
-                %{--<g:select name="curso.id" noSelection="${[null:'Selecione um Curso']}" from="${(1..9)}" optionValue="value" class="chzn-select" style="width:350px;" data-placeholder="Selecione um Curso..." />--}%
-               <select class="chzn-select" style="width:350px;" data-placeholder="Selecione um Período..." name="periodo" >
-                <g:each in="${((Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))).. (Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))+1) )}" var="ano">
-                    <g:each in="${[1,2]}" var="semestre">
-                        <option value="${ano}.${semestre}">${ano}.${semestre}</option>
-                    </g:each>
-                </g:each>
-               </select>
-            </div>
-            <div class="fix"></div>
-        </div>
+             <div class="rowElem"><label>Período:</label>
+                        <div class="formRight">
+                            <ul id="s4">
+                                <g:each in="${((Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))).. (Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))+1) )}" var="ano">
+                                    <g:each in="${[1,2]}" var="semestre">
+                                        <li id="${ano}.${semestre}">${ano}.${semestre}</li>
+                                    </g:each>
+                                </g:each>
+                            </ul>
+                        </div>
+                        <div class="fix"></div>
+                    </div>
+             %{--<div class="rowElem"><label for="ano">--}%
+                %{--<g:message code="periodoDisciplina.ano.label" default="Ano" />--}%
 
+            %{--</label><div class="formRight">--}%
+                %{--<div class="fieldcontain ${hasErrors(bean: periodoDisciplinaInstance, field: 'ano', 'error')} ">--}%
 
+                    %{--<g:textField name="ano" value="${periodoDisciplinaInstance?.ano}"/>--}%
+                %{--</div>--}%
+            %{--</div><div class="fix"></div></div>--}%
         <div class="rowElem"><label for="sala">
             <g:message code="periodoDisciplina.sala.label" default="Sala" />
 

@@ -1,6 +1,6 @@
 package sisap
 
-import br.edu.unime.util.CrudClientService
+
 import org.springframework.dao.DataIntegrityViolationException
 
 class DisciplinaController {
