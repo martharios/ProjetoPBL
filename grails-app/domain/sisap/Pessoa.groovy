@@ -18,8 +18,6 @@ class Pessoa {
     static belongsTo = [curso: Curso]
     static transients = ['perfil']
 
-
-
     static constraints = {
         nome(nullable: false, blank: false)
         matricula(nullable: false, blank: false, unique: true)
@@ -42,4 +40,8 @@ class Pessoa {
     boolean equals(obj){
         return obj?.id==id ? true:false
     }
+
+    static namedQueries = {}
+
+
 }

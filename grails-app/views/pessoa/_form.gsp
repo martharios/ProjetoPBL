@@ -102,12 +102,13 @@
     </div>
 </div><div class="fix"></div></div>
 
-<div class="rowElem">
+                        <div class="rowElem">
                         <label>Curso:</label>
                         <div class="formRight searchDrop">
                         <g:select name="curso.id" noSelection="${[null:'Selecione um Curso']}" from="${sisap.Curso.listOrderByNome()}" optionKey="id" optionValue="nome" class="chzn-select" style="width:350px;" data-placeholder="Selecione um Curso..." />
 
                         </div>
                         <div class="fix"></div>
+                        </div>
 
 

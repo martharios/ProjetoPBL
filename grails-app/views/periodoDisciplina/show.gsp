@@ -69,7 +69,7 @@
         %{--</div>--}%
         <div class="fix"></div>
         <div class="mainForm">
-            <fieldset>
+            <fieldset class="form">
                 <div class="widget first">
                     <div class="head"><h5 class="iList">Dados da Disciplina Associada a ${periodoDisciplinaInstance?.periodo}</h5></div>
                     <g:if test="${periodoDisciplinaInstance?.ano}">

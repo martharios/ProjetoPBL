@@ -123,8 +123,11 @@ class PeriodoDisciplinaController {
 
     def save() {
 
-        println params
-        return
+        params['ano'] = params.periodo.toString().split("\\.")[0]
+        params['semestre'] = params.periodo.toString().split("\\.")[1]
+
+
+
         def periodoDisciplinaInstance = new PeriodoDisciplina()
         periodoDisciplinaInstance.disciplina = Disciplina.read(params.disciplina)
         periodoDisciplinaInstance.professor = Pessoa.read(params.professor)
@@ -144,6 +147,7 @@ class PeriodoDisciplinaController {
             render(view: "passo1", model: [periodoDisciplinaInstance: periodoDisciplinaInstance])
             return
         }
+
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'periodoDisciplina.label', default: 'PeriodoDisciplina'), periodoDisciplinaInstance.id])
         redirect(action: "show", id: periodoDisciplinaInstance.id)
