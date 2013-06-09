@@ -183,6 +183,7 @@ class PeriodoDisciplinaController {
             atividadePeriodo = new AtividadePeriodo()
             atividadePeriodo.atividade = atividade
             atividadePeriodo.dataCriacao = new Date()
+            atividadePeriodo.periodoDisciplina =periodoDisciplina
             atividadePeriodo.dataPrazo = Date.parse("dd-MM-yyyy", params.prazo)
 
             if (atividadePeriodo.save(flush: true)){

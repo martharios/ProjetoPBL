@@ -7,7 +7,7 @@ class AtividadePeriodo {
     Date dataPrazo
     Atividade atividade
     static hasMany = [atividadesAluno: AtividadeAluno]
-    static belongsTo = PeriodoDisciplina
+    PeriodoDisciplina periodoDisciplina
 
 
     static constraints = {

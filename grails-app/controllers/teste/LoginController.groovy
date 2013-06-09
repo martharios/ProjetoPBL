@@ -28,6 +28,7 @@ class LoginController {
             session.auth=true
             session.idPessoa = pessoa.id
             session.nome = pessoa?.nome
+            session.perfilId = pessoa?.perfilId
 
             render(view: '/index')
         }  else{

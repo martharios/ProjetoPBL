@@ -1,23 +1,32 @@
 <div class="leftNav">
     <ul id="menu">
-        <li class="widgets"><a href="#" title="" class="exp"><span>Administração</span></a>
+
+
+        <g:if test="${br.edu.unime.util.Perfil.getPerfilByKey(session.perfilId) == 'Coordenador'}">
+            <li class="widgets"><a href="#" title="" class="exp"><span>Coordenação</span></a>
+                <ul class="sub">
+                    <li><g:link controller="pessoa" action="index" title="">Usuários</g:link> </li>
+                    <li><g:link controller="disciplina" action="index" title="">Disciplinas</g:link> </li>
+                    <li><g:link controller="curso" action="index" title="">Cursos</g:link> </li>
+
+                </ul>
+            </li>
+        </g:if>
+
+        <g:if test="${br.edu.unime.util.Perfil.getPerfilByKey(session.perfilId) in ['Coordenador', 'Professor']}">
+            <li class="widgets"><a href="#" title="" class="exp"><span>Docentes</span></a>
+                <ul class="sub">
+                    <li><g:link controller="periodoDisciplina" action="index" title="">Disciplina por período</g:link> </li>
+                </ul>
+            </li>
+        </g:if>
+
+
+        <li class="widgets"><a href="#" title="" class="exp"><span>Discentes</span></a>
             <ul class="sub">
-                <li><g:link controller="meuPerfil" action="index" title="">Meu Perfil</g:link> </li>
-                <li><g:link controller="pessoa" action="index" title="">Pessoa</g:link> </li>
-                <li><g:link controller="curso" action="index" title="">Curso</g:link> </li>
-                <li><g:link controller="disciplina" action="index" title="">Disciplina</g:link> </li>
                 <li><g:link controller="periodoDisciplina" action="index" title="">Disciplina por período</g:link> </li>
             </ul>
         </li>
-        %{--<li class="widgets"><a href="#" title="" class="exp"><span>Atividades</span></a>--}%
-            %{--<ul class="sub">--}%
-                %{--<li><g:link controller="atividade" action="index" title="">Atividade</g:link> </li>--}%
-                %{--<li><g:link controller="atividadeAluno" action="index" title="">Atividade por aluno</g:link> </li>--}%
-                %{--<li><g:link controller="atividadePeriodo" action="index" title="">Atividade por Período</g:link> </li>--}%
-                %{--<li><g:link controller="disciplina" action="index" title="">Disciplina</g:link> </li>--}%
-                %{--<li><g:link controller="periodoDisciplina" action="index" title="">Disciplina por período</g:link> </li>--}%
-            %{--</ul>--}%
-        %{--</li>--}%
 
     </ul>
 </div>
