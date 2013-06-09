@@ -126,7 +126,7 @@
                             <ul class="tabs">
                                 <li><a href="#tab2">Alunos</a></li>
                                 <li><a href="#tab3">Grupos</a></li>
-                                <li><a href="#tab4">Atividades</a></li>
+                                <li><a href="#tab4">Afazere(es) Disciplinar(es)</a></li>
                                 <li><a href="#tab5">Estatísticas</a></li>
                             </ul>
 
@@ -174,7 +174,7 @@
                                         <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
                                         <thead>
                                             <tr>
-                                                <td>Atividade</td>
+                                                <td>Afazere(es) Disciplinar(es)</td>
                                                 <td>Prazo</td>
                                             </tr>
                                         </thead>
