@@ -138,15 +138,31 @@ class PeriodoDisciplinaController {
 
         def listId = []
         params.alunos.each {listId << Integer.parseInt(it)}
+        def alunos =  Pessoa.findAllByIdInList(listId)
 
-        periodoDisciplinaInstance.alunos = Pessoa.findAllByIdInList(listId)
-
-
-        if (!periodoDisciplinaInstance.save(flush: true)) {
-            println periodoDisciplinaInstance.errors
-            render(view: "passo1", model: [periodoDisciplinaInstance: periodoDisciplinaInstance])
-            return
+        alunos.each {
+            it.addToDisciplinas(periodoDisciplinaInstance)
         }
+
+        periodoDisciplinaInstance.alunos = alunos
+
+
+        PeriodoDisciplina.withTransaction {
+            if (!periodoDisciplinaInstance.save(flush: true)) {
+
+                println periodoDisciplinaInstance.errors
+                render(view: "passo1", model: [periodoDisciplinaInstance: periodoDisciplinaInstance])
+                return
+            }
+            alunos.each {
+                if(!it.save(flush: true)){
+                    render(view: "passo1", model: [periodoDisciplinaInstance: periodoDisciplinaInstance])
+                    return
+                }
+            }
+        }
+
+
 
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'periodoDisciplina.label', default: 'PeriodoDisciplina'), periodoDisciplinaInstance.id])
@@ -203,6 +219,23 @@ class PeriodoDisciplinaController {
         }else{
             println grupo.errors
         }
+
+
+    }
+
+    def removeAlunoFromDisciplina(Long id){
+        def periodoDisciplina = PeriodoDisciplina.get(params.id)
+        def aluno = Pessoa.get(params.aluno)
+
+
+
+        periodoDisciplina.removeFromAlunos(aluno)
+        aluno.removeFromDisciplinas(periodoDisciplina)
+
+        periodoDisciplina.save(flush:  true)
+        aluno.save(flush:  true)
+
+
 
 
     }

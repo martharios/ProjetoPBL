@@ -14,8 +14,13 @@ class Pessoa {
     String telefoneCelular
     Boolean status
 
+    static hasMany = [disciplinas: PeriodoDisciplina]
+
+
+
     String getPerfil(){ return Perfil.getPerfilByKey(perfilId)}
     static belongsTo = [curso: Curso]
+
     static transients = ['perfil']
 
     static constraints = {

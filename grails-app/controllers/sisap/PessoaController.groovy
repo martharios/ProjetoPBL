@@ -41,6 +41,8 @@ class PessoaController {
     def save() {
         def pessoaInstance = new Pessoa(params)
 
+
+
         if (!pessoaInstance.save(flush: true)) {
             render(view: "create", model: [pessoaInstance: pessoaInstance])
             return
@@ -52,8 +54,7 @@ class PessoaController {
 
     def show(Long id) {
         def pessoaInstance = Pessoa.get(id)
-        def aulas
-        aulas = PeriodoDisciplina.findAllByProfessor(pessoaInstance)
+
 
         if (!pessoaInstance) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'pessoa.label', default: 'Pessoa'), id])
@@ -61,7 +62,7 @@ class PessoaController {
             return
         }
 
-        [pessoaInstance: pessoaInstance, aulas: aulas]
+        [pessoaInstance: pessoaInstance]
     }
 
     def edit(Long id) {

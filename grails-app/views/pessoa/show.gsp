@@ -169,24 +169,38 @@
                             </div>
                             <div id="tab2" class="tab_content">
                                 %{--<g:if test="${aulas}">--}%
-                                123456
                                 <div class="table">
-                                   <table class="table">
-                                       <thead>
-                                           <tr>
-                                               <th>Disciplina</th>
-                                           </tr>
 
-                                       </thead>
-                                       <tbody>
-                                       %{--<g:each in="${sisap.PeriodoDisciplina.findAll {pessoaInstance.nome in it.alunos.nome}}" var="periodoDisciplina">--}%
-                                           %{--<tr>--}%
-                                                %{--<td></td>--}%
-                                           %{--</tr>--}%
-                                       %{--</g:each>--}%
+                                    <div class="head"><h5 class="iFrames">Listagem de Disciplinas: ${pessoaInstance.disciplinas.size()}</h5></div>
+                                    <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
+                                        <thead class="head">
+                                        <tr>
 
-                                       </tbody>
-                                   </table>
+                                            <td>Disciplina</td>
+                                            <td>Professor</td>
+                                            <td>Período</td>
+
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <g:each in="${pessoaInstance?.disciplinas}" var="periodoDisciplina">
+                                            <tr>
+
+                                                <td>
+                                                    <g:link controller="periodoDisciplina" action="show" id="${periodoDisciplina?.id}">
+                                                        ${periodoDisciplina?.disciplina?.nome}
+                                                    </g:link>
+
+                                                </td>
+                                                <td>    ${periodoDisciplina?.professor.nome}</td>
+                                                <td>    ${periodoDisciplina?.periodo}</td>
+
+                                            </tr>
+                                            </g:each>
+
+                                        </tbody>
+                                    </table>
                                 </div>
                             %{--</g:if>--}%
                             </div>

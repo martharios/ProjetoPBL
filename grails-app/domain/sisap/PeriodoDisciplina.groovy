@@ -15,7 +15,7 @@ class PeriodoDisciplina {
     static transients = ['periodo']
 
     static hasMany = [alunos: Pessoa, atividadesPeriodo: AtividadePeriodo, grupos: Grupo]
-
+    static belongsTo = Pessoa
 
     static constraints = {
     }

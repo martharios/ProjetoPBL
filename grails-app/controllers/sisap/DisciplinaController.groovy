@@ -15,11 +15,26 @@ class DisciplinaController {
     }
 
     def list(Integer max) {
+
         params.max = Math.min(max ?: 10, 100)
-
-
-        def disciplinaInstanceList = crudClientService.findDisciplinasByParams(params.max, params.offset ? params.offset.toInteger(): 0, params.codigo, params.nome, params.descricao)
-        def disciplinaInstanceTotal = crudClientService.countDisciplinasByParams(params.codigo, params.nome, params.descricao)
+        def disciplinaInstanceList = Disciplina.withCriteria() {
+            maxResults(params.max)
+            firstResult(params.offset ? params.offset.toInteger() : 0)
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.codigo){
+                ilike('codigo', "%$params.codigo%")
+            }
+        }
+        def disciplinaInstanceTotal = Disciplina.createCriteria().count(){
+            if (params.nome){
+                ilike('nome', "%$params.nome%")
+            }
+            if (params.codigo){
+                ilike('codigo', "%$params.codigo%")
+            }
+        }
 
 
         [disciplinaInstanceList: disciplinaInstanceList, disciplinaInstanceTotal: disciplinaInstanceTotal]

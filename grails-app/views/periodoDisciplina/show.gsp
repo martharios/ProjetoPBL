@@ -81,15 +81,15 @@
                             </div><div class="fix"></div></div>
                     </g:if>
 
-                    <g:if test="${periodoDisciplinaInstance?.autorCadastro}">
-                        <div class="rowElem"><label><span id="alunos-label" class="property-label">Autor do Cadastro</span>:</label>
-                            <div class="formRight">
-                                
+                    %{--<g:if test="${periodoDisciplinaInstance?.autorCadastro}">--}%
+                        %{--<div class="rowElem"><label><span id="alunos-label" class="property-label">Autor do Cadastro</span>:</label>--}%
+                            %{--<div class="formRight">--}%
+                                %{----}%
 
-                                    <span class="property-value" aria-labelledby="alunos-label"><g:link controller="pessoa" action="show" id="${periodoDisciplinaInstance?.autorCadastro?.id}"><h4>${periodoDisciplinaInstance?.autorCadastro?.encodeAsHTML()}</h4></g:link></span> <div class="fix"></div>
+                                    %{--<span class="property-value" aria-labelledby="alunos-label"><g:link controller="pessoa" action="show" id="${periodoDisciplinaInstance?.autorCadastro?.id}"><h4>${periodoDisciplinaInstance?.autorCadastro?.encodeAsHTML()}</h4></g:link></span> <div class="fix"></div>--}%
 
-                            </div><div class="fix"></div></div>
-                    </g:if>
+                            %{--</div><div class="fix"></div></div>--}%
+                    %{--</g:if>--}%
 
                     <g:if test="${periodoDisciplinaInstance?.disciplina}">
                         <div class="rowElem"><label><span id="disciplina-label" class="property-label"><g:message code="periodoDisciplina.disciplina.label" default="Disciplina" /></span>:</label>
@@ -138,17 +138,21 @@
                                             <div class="formRight" style="width: 100%;">
 
                                                 <div class="table">
-                                                    <div class="head"><h5 class="iFrames">Alunos: ${periodoDisciplinaInstance.alunos.size()}</h5></div>
+                                                    <div class="head" id="alunosListagem"><h5 class="iFrames">Alunos: ${periodoDisciplinaInstance.alunos.size()}</h5></div>
                                                     <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
                                                         <thead>
                                                         <td>Nome</td>
                                                         <td>Email</td>
+                                                        <td width="10%">Remover da disciplina</td>
                                                         </thead>
                                                         <tbody>
                                                         <g:each in="${periodoDisciplinaInstance.alunos}" var="a" status="i">
                                                             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                                                                 <td><g:link controller="pessoa" action="show" id="${a.id}">${a.nome}</g:link> </td>
                                                                 <td>${a?.email}</td>
+                                                                <td align="center"> <g:remoteLink action="removeAlunoFromDisciplina" params="${[id: periodoDisciplinaInstance.id, aluno: a.id]}" >
+                                                                    <img src="${createLinkTo(dir: 'images/icons/dark', file: 'trash.png')}">
+                                                                </g:remoteLink> </td>
                                                             </tr>
 
                                                         </g:each>

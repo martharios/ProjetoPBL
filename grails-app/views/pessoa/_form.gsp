@@ -41,7 +41,7 @@
 </label><div class="formRight">
     <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'cpf', 'error')} required">
 
-        <g:cpf name="cpf" required="" value="${pessoaInstance?.cpf}"/>
+        <g:textField name="cpf" required="" value="${pessoaInstance?.cpf}"/>
     </div>
 </div><div class="fix"></div></div>
 
