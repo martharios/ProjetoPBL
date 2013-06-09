@@ -170,7 +170,7 @@
                                 </div>
                                 <div id="tab4" class="tab_content">
                                     <div class="table">
-                                        <div class="head"><h5 class="iFrames">Atividades no Período</h5></div>
+                                        <div class="head"><h5 class="iFrames">Afazeres do Período</h5></div>
                                         <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
                                         <thead>
                                             <tr>
