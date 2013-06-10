@@ -8,7 +8,7 @@ class AuthenticationFilters {
             before = {
 //                def pessoa = Pessoa.read(session.idPessoa)
 
-                if(!session.idPessoa && (params.controller != 'login')){
+                if(!session.auth && (params.controller != 'login')){
                     flash.message = "Usuário não logado ou a sessão expirou."
                     redirect(controller: 'login', action: 'index')
                     return false

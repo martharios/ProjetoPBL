@@ -10,7 +10,6 @@ grails.project.source.level = 1.6
 //grails.project.fork = [
 //   run: [maxMemory:1024, minMemory:64, debug:false, maxPerm:256]
 //]
-grails.server.port.http=7070
 
 
 grails.project.dependency.resolution = {
@@ -37,7 +36,7 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://snapshots.repository.codehaus.org"
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
-        //mavenRepo "http://repository.jboss.com/maven2/"
+        mavenRepo "http://maven.springframework.org/milestone/"
     }
 
     dependencies {

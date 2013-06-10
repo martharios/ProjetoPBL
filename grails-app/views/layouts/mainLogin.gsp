@@ -6,7 +6,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"><!--<![endif]-->
 <head>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title><g:layoutTitle default="Grails"/></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title><g:layoutTitle default="SISAP"/></title>
 
     <link href="${createLinkTo(dir: 'css', file:  'main.css')}" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css' />
