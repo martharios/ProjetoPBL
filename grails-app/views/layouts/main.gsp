@@ -87,12 +87,12 @@
                     <ul>
                         <li><a href="#" title=""><g:link controller="meuPerfil" action="index"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'profile.png')}" alt="" /><span>perfil</span></g:link> </li>
                         %{--<li><a href="#" title=""><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'tasks.png')}" alt="" /><span>Tarefas</span></a></li>--}%
-                        <li class="dd"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'messages.png')}" alt="" /><span>Mensagens</span><span class="numberTop">8</span>
+                        <li class="dd"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'messages.png')}" alt="" /><span>Mensagens</span><span class="numberTop">${mensagemInstanceTotal}</span>
                             <ul class="menu_body">
-                                <li><a href="#" title="">Nova mensagem</a></li>
-                                <li><a href="#" title="">Caixa de entrada</a></li>
+                                <li><g:link controller="mensagem" action="create">Nova Mensagem</g:link></li>
+                                <li><g:link controller="mensagem" action="listEntradas">Caixa de Entrada</g:link></li>
                                 <li><a href="#" title="">Caixa de saída</a></li>
-                                <li><a href="#" title="">lixo eletrônico</a></li>
+                                <li><g:link controller="mensagem" action="listEnviadas">Itens Enviados</g:link></li>
                             </ul>
                         </li>
                         <li><g:link controller="login"  action="logout"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'logout.png')}" alt="" /><span>Sair</span></g:link> </li>

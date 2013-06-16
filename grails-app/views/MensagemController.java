@@ -5,7 +5,7 @@ import wslite.soap.SOAPClient
 
 class MensagemController {
 
-    def mailService
+     def mailService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -72,7 +72,7 @@ class MensagemController {
 
         println("Remetente :" + mensagemInstance.remetente)
 
-        mailService.sendMail {
+         mailService.sendMail {
             to listAluno.email.toArray()
             subject mensagemInstance.titulo + " - " + mensagemInstance.remetente
             body mensagemInstance.mensagem
@@ -162,7 +162,6 @@ class MensagemController {
         resposta.dataMensagem = new Date()
         resposta.remetente = Pessoa.read(session.idPessoa)
         resposta.mensagem = params.resposta
-        resposta.titulo = "RES: " + mensagemOrginal.titulo
 
         resposta.destinatarios = mensagemOrginal.destinatarios
 
@@ -177,7 +176,7 @@ class MensagemController {
 
         mensagemOrginal.save(flush: true)
 
-        render(template: 'templateResposta', model: [mensagemInstance: mensagemOrginal])
+        render(template: 'show', model: [mensagemInstance: mensagemOrginal])
 
     }
 

@@ -127,14 +127,7 @@ class PeriodoDisciplinaController {
         params['semestre'] = params.periodo.toString().split("\\.")[1]
 
 
-
         def periodoDisciplinaInstance = new PeriodoDisciplina()
-        periodoDisciplinaInstance.disciplina = Disciplina.read(params.disciplina)
-        periodoDisciplinaInstance.professor = Pessoa.read(params.professor)
-        periodoDisciplinaInstance.ano = Integer.parseInt(params.ano)
-        periodoDisciplinaInstance.sala = Integer.parseInt(params.sala)
-        periodoDisciplinaInstance.semestre = Integer.parseInt(params.semestre)
-        periodoDisciplinaInstance.autorCadastro=Pessoa.read(session.idPessoa)
 
         def listId = []
         params.alunos.each {listId << Integer.parseInt(it)}
@@ -143,6 +136,14 @@ class PeriodoDisciplinaController {
         alunos.each {
             it.addToDisciplinas(periodoDisciplinaInstance)
         }
+
+        periodoDisciplinaInstance.disciplina = Disciplina.read(params.disciplina)
+        periodoDisciplinaInstance.professor = Pessoa.read(params.professor)
+        periodoDisciplinaInstance.ano = Integer.parseInt(params.ano)
+        periodoDisciplinaInstance.sala = Integer.parseInt(params.sala)
+        periodoDisciplinaInstance.semestre = Integer.parseInt(params.semestre)
+
+
 
         periodoDisciplinaInstance.alunos = alunos
 
@@ -224,22 +225,27 @@ class PeriodoDisciplinaController {
 
     }
 
+
     def removeAlunoFromDisciplina(Long id){
+
         def periodoDisciplina = PeriodoDisciplina.get(params.id)
         def aluno = Pessoa.get(params.aluno)
-
-
 
         periodoDisciplina.removeFromAlunos(aluno)
         aluno.removeFromDisciplinas(periodoDisciplina)
 
+
         periodoDisciplina.save(flush:  true)
+        println periodoDisciplina.errors
+
         aluno.save(flush:  true)
 
-
-
+        println aluno.errors
+        redirect(action: 'show', id: periodoDisciplina.id)
 
     }
+
+
 
     def show(Long id) {
         def periodoDisciplinaInstance = PeriodoDisciplina.get(id)

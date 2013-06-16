@@ -106,7 +106,7 @@
                             <div class="formRight">
                                 
 
-                                <span class="property-value" aria-labelledby="professor-label"><g:link controller="pessoa" action="show" id="${periodoDisciplinaInstance?.professor?.id}"><h4>${periodoDisciplinaInstance?.professor?.encodeAsHTML()}</h4></g:link></span>
+                                <span class="property-value" aria-labelledby="professor-label"><g:link controller="pessoa" action="show" id="${periodoDisciplinaInstance?.professor?.id}"><h4>${periodoDisciplinaInstance?.professor?.nome}</h4></g:link></span>
                                 
                             </div><div class="fix"></div></div>
                     </g:if>
@@ -150,9 +150,9 @@
                                                             <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                                                                 <td><g:link controller="pessoa" action="show" id="${a.id}">${a.nome}</g:link> </td>
                                                                 <td>${a?.email}</td>
-                                                                <td align="center"> <g:remoteLink action="removeAlunoFromDisciplina" params="${[id: periodoDisciplinaInstance.id, aluno: a.id]}" >
+                                                                <td align="center"> <g:link action="removeAlunoFromDisciplina" params="${[id: periodoDisciplinaInstance.id, aluno: a.id]}" >
                                                                     <img src="${createLinkTo(dir: 'images/icons/dark', file: 'trash.png')}">
-                                                                </g:remoteLink> </td>
+                                                                </g:link> </td>
                                                             </tr>
 
                                                         </g:each>

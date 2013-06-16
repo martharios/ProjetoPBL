@@ -4,10 +4,15 @@ class Mensagem {
 
     static mapWith="mongo"
 
+    Pessoa remetente
     String titulo
     String mensagem
 
-    static hasMany = [destinatarios: Pessoa]
+    Boolean status
+    Date dataMensagem
+    String emailDestinatario
+
+    static hasMany = [destinatarios: Pessoa, mensagens: Mensagem]
 
     static constraints = {
         titulo(blank: false)

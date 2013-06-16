@@ -6,7 +6,6 @@ class MeuPerfilController {
     def utilService
     def index() {
         def pessoaInstance = Pessoa.get(session.idPessoa)
-        def disciplinas
         render(view: 'index', model: [pessoaInstance: pessoaInstance])
     }
     def ajaxAlterarSenha(Long id){

@@ -40,8 +40,8 @@
                         <td>${message(code: 'disciplina.nome.label', default: 'Nome')}</td>
 
                         <td>${message(code: 'disciplina.descricao.label', default: 'Descricao')}</td>
-					
 
+                        <td width="7%">Editar</td>
 					
 					</tr>
 				</thead>
@@ -51,11 +51,13 @@
 					
 						%{--<td><g:link action="show" id="${disciplinaInstance.id}">${fieldValue(bean: disciplinaInstance, field: "codigo")}</g:link></td>--}%
 
-                        <td>${disciplinaInstance.codigo}</td>
+                        <td><g:link action="show" id="${disciplinaInstance.id}">${fieldValue(bean: disciplinaInstance, field: "codigo")}</g:link></td>
 
                         <td>${disciplinaInstance.nome}</td>
 
                         <td>${disciplinaInstance.descricao}</td>
+
+                        <td width="7%" align="center"><g:link action="edit" id="${disciplinaInstance?.id}"><img src="${createLinkTo(dir: 'images/icons/dark', file: 'pencil.png')}"></g:link></td>
 
                         %{--<td>${fieldValue(bean: disciplinaInstance, field: "nome")}</td>--}%
 
