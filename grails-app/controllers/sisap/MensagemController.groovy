@@ -10,13 +10,21 @@ class MensagemController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def listEntradas(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        params.sort= "dataMensagem"
-        params.order = "desc"
-
         def pessoa  = Pessoa.read(session.idPessoa)
 
-        render(view: 'listEntradas', model: [mensagemInstanceList: pessoa.mensagensRecebidas, mensagemInstanceTotal: pessoa.mensagensRecebidas.size()])
+        params.max = Math.min(max ?: 10, 100)
+
+
+
+
+
+        def mensagens = Mensagem.withCriteria {
+
+            order("dataMensagem", "desc")
+            'in'("id", pessoa.mensagensRecebidas.id)
+        }
+
+        render(view: 'listEntradas', model: [mensagemInstanceList: mensagens, mensagemInstanceTotal: mensagens.size()])
     }
 
     def listEnviadas(Integer max) {
