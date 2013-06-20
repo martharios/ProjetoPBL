@@ -91,8 +91,7 @@
                             <ul class="menu_body">
                                 <li><g:link controller="mensagem" action="create">Nova Mensagem</g:link></li>
                                 <li><g:link controller="mensagem" action="listEntradas">Caixa de Entrada</g:link></li>
-                                <li><a href="#" title="">Caixa de saída</a></li>
-                                <li><g:link controller="mensagem" action="listEnviadas">Itens Enviados</g:link></li>
+                                <li><g:link controller="mensagem" action="listEnviadas">Caixa de Saída</g:link></li>
                             </ul>
                         </li>
                         <li><g:link controller="login"  action="logout"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'logout.png')}" alt="" /><span>Sair</span></g:link> </li>

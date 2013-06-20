@@ -9,15 +9,25 @@ class MensagemController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def listEntradas() {
-        redirect(action: "listEnviadas", params: params)
+    def listEntradas(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        params.sort= "dataMensagem"
+        params.order = "desc"
+
+        def pessoa  = Pessoa.read(session.idPessoa)
+
+        render(view: 'listEntradas', model: [mensagemInstanceList: pessoa.mensagensRecebidas, mensagemInstanceTotal: pessoa.mensagensRecebidas.size()])
     }
 
     def listEnviadas(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         params.sort= "dataMensagem"
         params.order = "desc"
-        [mensagemInstanceList: Mensagem.list(params), mensagemInstanceTotal: Mensagem.count()]
+
+        def remetente  = Pessoa.read(session.idPessoa)
+        def mensagemInstanceList = remetente.mensagensEnviadas
+
+        [mensagemInstanceList: mensagemInstanceList, mensagemInstanceTotal: mensagemInstanceList.size()]
     }
 
     def create() {
@@ -48,15 +58,19 @@ class MensagemController {
 
     def save() {
         def mensagemInstance = new Mensagem(params)
+        def remetente  =Pessoa.get(session.idPessoa)
 
-        mensagemInstance.remetente = Pessoa.read(session.idPessoa)
+
+        mensagemInstance.remetente =remetente
         mensagemInstance.dataMensagem = new Date()
         mensagemInstance.setStatus(true)
 
         def listAluno = []
 
         params.alunos.each {
-            listAluno  << Pessoa.read(it)
+            def pessoa = Pessoa.get(it)
+
+            listAluno  << pessoa
         }
 
         mensagemInstance.emailDestinatario = listAluno.email
@@ -70,13 +84,19 @@ class MensagemController {
             return
         }
 
-        println("Remetente :" + mensagemInstance.remetente)
 
         mailService.sendMail {
             to listAluno.email.toArray()
             subject mensagemInstance.titulo + " - " + mensagemInstance.remetente
             body mensagemInstance.mensagem
         }
+
+        listAluno.each {
+           it.addToMensagensRecebidas(mensagemInstance)
+           it.save(flush: true)
+        }
+        remetente.addToMensagensEnviadas(mensagemInstance)
+        remetente.save(flush: true)
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'mensagem.label', default: 'Mensagem'), mensagemInstance.id])
         redirect(action: "listEnviadas", id: mensagemInstance.id)

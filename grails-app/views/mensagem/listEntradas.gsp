@@ -14,7 +14,7 @@
             <div class="breadCrumb module">
                 <ul>
                     <li class="firstB"><a href="#">Home</a> </li>
-                    <li><g:link action="index"> <g:message code="default.list.label" args="[entityName]" /></g:link></li>
+                    <li><g:link action="listEntradas"> <g:message code="default.list.label" args="[entityName]" /></g:link></li>
 
                 </ul>
             </div>

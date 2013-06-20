@@ -14,8 +14,7 @@ class Pessoa {
     String telefoneCelular
     Boolean status
 
-    static hasMany = [disciplinas: PeriodoDisciplina]
-
+    static hasMany = [disciplinas: PeriodoDisciplina, mensagensRecebidas: Mensagem, mensagensEnviadas: Mensagem]
 
 
     String getPerfil(){ return Perfil.getPerfilByKey(perfilId)}
