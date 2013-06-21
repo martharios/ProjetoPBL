@@ -1,3 +1,4 @@
+<%@ page import="sisap.Pessoa" %>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
@@ -87,7 +88,7 @@
                     <ul>
                         <li><a href="#" title=""><g:link controller="meuPerfil" action="index"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'profile.png')}" alt="" /><span>perfil</span></g:link> </li>
                         %{--<li><a href="#" title=""><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'tasks.png')}" alt="" /><span>Tarefas</span></a></li>--}%
-                        <li class="dd"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'messages.png')}" alt="" /><span>Mensagens</span><span class="numberTop">${mensagemInstanceTotal}</span>
+                        <li class="dd"><img src="${createLinkTo(dir: 'images/icons/topnav', file: 'messages.png')}" alt="" /><span>Mensagens</span><span class="numberTop">${sisap.MensagemDestinatario.findAllByDestinatarioAndLida(Pessoa.read(session.idPessoa), false).size()}</span>
                             <ul class="menu_body">
                                 <li><g:link controller="mensagem" action="create">Nova Mensagem</g:link></li>
                                 <li><g:link controller="mensagem" action="listEntradas">Caixa de Entrada</g:link></li>

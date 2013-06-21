@@ -38,24 +38,24 @@
 					
                         <td>${message(code: 'mensagem.titulo.label', default: 'Titulo')}</td>
 					
-                        <td>${message(code: 'mensagem.mensagem.label', default: 'Mensagem')}</td>
-					
-                        <th width="10%">Editar</th>
-                        <th width="10%">Excluir</th>
+
+					     <th>Remetente</th>
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${mensagemInstanceList}" status="i" var="mensagemInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${mensagemInstance.id}">${fieldValue(bean: mensagemInstance, field: "titulo")}</g:link></td>
-					
-						<td>${fieldValue(bean: mensagemInstance, field: "mensagem")}</td>
-					
-                        <td align="center"><g:link action="edit" id="${mensagemInstance.id}"><img src="${createLinkTo(dir: 'images/icons/middlenav', file: 'pencil.png')}" style="width: 15px;height: 15px;" /></g:link></td>
-                        <td align="center"><div id="auxDiv${mensagemInstance.id}"></div><a href="#auxDiv${mensagemInstance.id}" onclick="jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'mensagem.label', default: 'Artefact > Mensagem')}?', 'Confirmação', function(e){if(e){
-                        $('#id').val('${mensagemInstance.id}');$('form#formShow').submit();
-                        $('#id').val('')}});"><img src="${createLinkTo(dir: 'images/icons/middlenav', file: 'trash.png')}" style="width: 15px;height: 15px;" /></a></td>
+						<td><g:link action="show" id="${mensagemInstance.id}">
+                            ${!mensagemInstance.lida ?  "<b>":""}
+                            ${mensagemInstance?.mensagem?.titulo}
+                            ${!mensagemInstance.lida ?  "</b>":""}
+                        </g:link>
+                        </td>
+					    <td>${mensagemInstance?.mensagem?.remetente?.nome}</td>
+                        <td>${mensagemInstance?.mensagem?.mensagem?.substring(0, mensagemInstance?.mensagem?.mensagem.length() > 20 ? 20:mensagemInstance?.mensagem?.mensagem?.length())}${mensagemInstance?.mensagem?.mensagem?.length() > 20 ? "...":""}</td>
+
 					</tr>
 				</g:each>
 				</tbody>

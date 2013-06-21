@@ -42,14 +42,14 @@
                 </div>
             </div>
         </g:if>
-        <div class="middleNav">
-            <g:form name="formShow" method="POST"  action="delete">
-                <g:hiddenField name="id" value="${mensagemInstance.id}" />
-                <ul>
-                    <li class="iDelete"><a href="#" onclick="jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'mensagem.label', default: 'Mensagem')}?', 'Confirmação', function(e){if(e){$('form#formShow').submit();}});"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></a></li>
-                </ul>
-            </g:form>
-        </div>
+        %{--<div class="middleNav">--}%
+            %{--<g:form name="formShow" method="POST"  action="delete">--}%
+                %{--<g:hiddenField name="id" value="${mensagemInstance.id}" />--}%
+                %{--<ul>--}%
+                    %{--<li class="iDelete"><a href="#" onclick="jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'mensagem.label', default: 'Mensagem')}?', 'Confirmação', function(e){if(e){$('form#formShow').submit();}});"><span><g:message code="default.button.delete.label" args="[entityName]" /></span></a></li>--}%
+                %{--</ul>--}%
+            %{--</g:form>--}%
+        %{--</div>--}%
         <div class="fix"></div>
         <div class="mainForm">
             <fieldset>

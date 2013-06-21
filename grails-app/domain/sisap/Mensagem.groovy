@@ -14,8 +14,6 @@ class Mensagem {
 
     static hasMany = [destinatarios: Pessoa, mensagens: Mensagem]
 
-    static belongsTo = Pessoa
-
     static constraints = {
         titulo(blank: false)
         destinatarios(blank: false)

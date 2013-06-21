@@ -8,7 +8,5 @@
         <span class="property-value" aria-labelledby="mensagem-label">${mensagemResposta.mensagem}</span>
 
     </div><div class="fix"></div></div>
-    <g:if test="${mensagemResposta.mensagens}">
-        <g:render template="templateResposta" model="[mensagemInstance: mensagemResposta]"/>
-    </g:if>
+
 </g:each>

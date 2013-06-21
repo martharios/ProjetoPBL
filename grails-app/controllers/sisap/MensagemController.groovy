@@ -14,15 +14,8 @@ class MensagemController {
 
         params.max = Math.min(max ?: 10, 100)
 
+//        def mensagens = MensagemDestinatario.findAllByDestinatario(pessoa, [max: params.max, sort: 'mensagem.dataMensagem', order: 'asc'])
 
-
-
-
-        def mensagens = Mensagem.withCriteria {
-
-            order("dataMensagem", "desc")
-            'in'("id", pessoa.mensagensRecebidas.id)
-        }
 
         render(view: 'listEntradas', model: [mensagemInstanceList: mensagens, mensagemInstanceTotal: mensagens.size()])
     }
@@ -33,9 +26,16 @@ class MensagemController {
         params.order = "desc"
 
         def remetente  = Pessoa.read(session.idPessoa)
-        def mensagemInstanceList = remetente.mensagensEnviadas
 
-        [mensagemInstanceList: mensagemInstanceList, mensagemInstanceTotal: mensagemInstanceList.size()]
+        def mensagens = Mensagem.withCriteria {
+
+            order("dataMensagem", "desc")
+
+            eq("remetente", remetente)
+        }
+
+
+        [mensagemInstanceList: mensagens, mensagemInstanceTotal: mensagens.size()]
     }
 
     def create() {
@@ -43,14 +43,20 @@ class MensagemController {
     }
 
     def show(Long id) {
-        def mensagemInstance = Mensagem.get(id)
-        if (!mensagemInstance) {
+        def mensagemDestinatario = MensagemDestinatario.get(id)
+        def mensagemDestinatarioVer = MensagemDestinatario.findByMensagemAndDestinatario(mensagemDestinatario.mensagem, Pessoa.read(session.idPessoa))
+
+        if(mensagemDestinatario && mensagemDestinatario?.id == mensagemDestinatarioVer?.id && mensagemDestinatario?.lida == false){
+            mensagemDestinatario.lida = true
+            mensagemDestinatario.save(flush: true)
+        }
+        if (!mensagemDestinatarioVer) {
             flash.message = message(code: 'default.not.found.message', args: [message(code: 'mensagem.label', default: 'Mensagem'), id])
             redirect(action: "list")
             return
         }
 
-        [mensagemInstance: mensagemInstance]
+        [mensagemInstance: mensagemDestinatarioVer.mensagem]
     }
 
     def edit(Long id) {
@@ -82,9 +88,11 @@ class MensagemController {
         }
 
         mensagemInstance.emailDestinatario = listAluno.email
+
+        println listAluno
         mensagemInstance.destinatarios = listAluno
 
-        println("Emails :" + mensagemInstance.emailDestinatario)
+
 
 
         if (!mensagemInstance.save(flush: true)) {
@@ -92,22 +100,34 @@ class MensagemController {
             return
         }
 
+        mensagemInstance.remetente = remetente
+        mensagemInstance.save(flush: true)
 
-        mailService.sendMail {
-            to listAluno.email.toArray()
-            subject mensagemInstance.titulo + " - " + mensagemInstance.remetente
-            body mensagemInstance.mensagem
-        }
+
 
         listAluno.each {
-           it.addToMensagensRecebidas(mensagemInstance)
            it.save(flush: true)
+
+           def mensagemDestinatario
+           mensagemDestinatario = new MensagemDestinatario()
+           mensagemDestinatario.mensagem = mensagemInstance
+           mensagemDestinatario.destinatario = it
+           mensagemDestinatario.lida = false
+           mensagemDestinatario.save(flush: true)
+
+           def pessoaTemp = it
+           mailService.sendMail {
+                to pessoaTemp.email
+                subject mensagemInstance.titulo + " - " + mensagemInstance.remetente
+                body mensagemInstance.mensagem
+           }
         }
-        remetente.addToMensagensEnviadas(mensagemInstance)
+
+
         remetente.save(flush: true)
 
-        flash.message = message(code: 'default.created.message', args: [message(code: 'mensagem.label', default: 'Mensagem'), mensagemInstance.id])
-        redirect(action: "listEnviadas", id: mensagemInstance.id)
+        flash.message = "Mensagem enviada!"
+        redirect(action: "listEntradas", id: mensagemInstance.id)
     }
 
     def update(Long id, Long version) {
@@ -194,12 +214,20 @@ class MensagemController {
 
         resposta.destinatarios = mensagemOrginal.destinatarios
 
-        mailService.sendMail {
-            to resposta.destinatarios.email.toArray()
-            subject "RES: " + mensagemOrginal.titulo
-            body resposta.mensagem
+        mensagemOrginal.destinatarios.each {
+            def pessoaTemp = it
+            mailService.sendMail {
+                to pessoaTemp.email
+                subject "RES: " + mensagemOrginal.titulo
+                body resposta.mensagem
+            }
         }
         resposta.save(flush: true)
+
+        resposta.destinatarios.each {
+            def mensagemDestinatario = new MensagemDestinatario(destinatario: it, mensagem: resposta, lida: false)
+            mensagemDestinatario.save(flush: true)
+        }
 
         mensagemOrginal.addToMensagens(resposta)
 
