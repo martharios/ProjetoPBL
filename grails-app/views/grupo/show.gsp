@@ -69,6 +69,17 @@
                             </div><div class="fix"></div></div>
                     </g:if>
                     
+                    <g:if test="${grupoInstance?.nome}">
+                        <div class="rowElem"><label><span id="nome-label" class="property-label"><g:message code="grupo.nome.label" default="Nome" /></span>:</label>
+                            <div class="formRight">
+                                
+                                <span class="property-value" aria-labelledby="nome-label"><g:textField readonly="readonly" name="${grupoInstance}" value="${grupoInstance.nome}" /></span>
+                                
+                            </div><div class="fix"></div></div>
+                    </g:if>
+                    
+                    
+                    
                     <g:if test="${grupoInstance?.cor}">
                         <div class="rowElem"><label><span id="cor-label" class="property-label"><g:message code="grupo.cor.label" default="Cor" /></span>:</label>
                             <div class="formRight">
@@ -78,14 +89,7 @@
                             </div><div class="fix"></div></div>
                     </g:if>
                     
-                    <g:if test="${grupoInstance?.nome}">
-                        <div class="rowElem"><label><span id="nome-label" class="property-label"><g:message code="grupo.nome.label" default="Nome" /></span>:</label>
-                            <div class="formRight">
-                                
-                                <span class="property-value" aria-labelledby="nome-label"><g:textField readonly="readonly" name="${grupoInstance}" value="${grupoInstance.nome}" /></span>
-                                
-                            </div><div class="fix"></div></div>
-                    </g:if>
+                    
                     
                     <div class="fix"></div>
                 </div>

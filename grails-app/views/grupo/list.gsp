@@ -35,10 +35,12 @@
             <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
 				<thead>
 					<tr>
+					    
+					     <td>${message(code: 'grupo.nome.label', default: 'Nome')}</td>
 					
                         <td>${message(code: 'grupo.cor.label', default: 'Cor')}</td>
 					
-                        <td>${message(code: 'grupo.nome.label', default: 'Nome')}</td>
+                       
 					
                         <th width="10%">Editar</th>
                         <th width="10%">Excluir</th>
@@ -48,9 +50,9 @@
 				<g:each in="${grupoInstanceList}" status="i" var="grupoInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${grupoInstance.id}">${fieldValue(bean: grupoInstance, field: "cor")}</g:link></td>
+						<td><g:link action="show" id="${grupoInstance.id}">${fieldValue(bean: grupoInstance, field: "nome")}</g:link></td>
 					
-						<td>${fieldValue(bean: grupoInstance, field: "nome")}</td>
+						<td>${fieldValue(bean: grupoInstance, field: "cor")}</td>
 					
                         <td align="center"><g:link action="edit" id="${grupoInstance.id}"><img src="${createLinkTo(dir: 'images/icons/middlenav', file: 'pencil.png')}" style="width: 15px;height: 15px;" /></g:link></td>
                         <td align="center"><div id="auxDiv${grupoInstance.id}"></div><a href="#auxDiv${grupoInstance.id}" onclick="jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'grupo.label', default: 'Artefact > Grupo')}?', 'Confirmação', function(e){if(e){

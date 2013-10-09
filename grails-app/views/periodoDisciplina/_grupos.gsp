@@ -3,7 +3,7 @@
     <div class="head"><h5 class="iFrames">Grupos</h5></div>
     <table cellpadding="0" cellspacing="0" width="100%" class="tableStatic resize">
         <tbody>
-        <g:each in="${periodoDisciplina.grupos}" var="grupo">
+        <g:each in="${periodoDisciplina.grupo}" var="grupo">
 
             <tr>
                 <td style="background-color: #${grupo.cor};text-decoration: underline;"><b>${grupo.nome}</b></td>

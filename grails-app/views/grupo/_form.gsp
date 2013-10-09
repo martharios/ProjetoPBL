@@ -12,18 +12,6 @@
     </div>
 </div><div class="fix"></div></div>
 
-
-<div class="rowElem"><label for="cor">
-    <g:message code="grupo.cor.label" default="Cor" />
-    
-</label><div class="formRight">
-    <div class="fieldcontain ${hasErrors(bean: grupoInstance, field: 'cor', 'error')} ">
-
-        <g:textField name="cor" value="${grupoInstance?.cor}"/>
-    </div>
-</div><div class="fix"></div></div>
-
-
 <div class="rowElem"><label for="nome">
     <g:message code="grupo.nome.label" default="Nome" />
     
@@ -33,5 +21,17 @@
         <g:textField name="nome" value="${grupoInstance?.nome}"/>
     </div>
 </div><div class="fix"></div></div>
+
+
+   <div class="rowElem">
+                    <label>Cor:</label>
+                    <div class="formRight">
+                        <input type="text" class="colorpick" id="colorpickerField" name="colorpickerField" value="00ff00" />
+                        <label for="colorpickerField" class="pick"></label>
+                        
+                        
+                    <div class="fix"></div>
+                </div></div>
+
 
 
