@@ -2,8 +2,9 @@ package sisap
 
 class MensagemDestinatario {
 
-    Boolean lida
-    static mapWith="mongo"
+	//static mapWith="mongo"
+    
+	Boolean lida    
     Mensagem mensagem
     Pessoa destinatario
 

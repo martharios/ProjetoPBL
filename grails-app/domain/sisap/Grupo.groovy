@@ -1,7 +1,7 @@
 package sisap
 
 class Grupo {
-    static mapWith="mongo"
+    //static mapWith="mongo"
 
     String nome
     String cor

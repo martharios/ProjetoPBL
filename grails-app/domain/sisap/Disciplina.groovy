@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlElement
 @XmlAccessorType(XmlAccessType.NONE)
 class Disciplina {
 
-    static mapWith="mongo"
+    //static mapWith="mongo"
 
     @XmlElement(name = "codigo")
     String codigo
