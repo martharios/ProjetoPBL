@@ -14,10 +14,10 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            driverClassName = "com.mysql.jdbc.Driver"
-			url = "jdbc:mysql://localhost/sisap"
-			username = "root"
-			password = "123456"
+            driverClassName = "org.postgresql.Driver"
+			url = "jdbc:postgresql://localhost:5432/sisap"
+			username = "postgres"
+			password = "16marioe"
         }
     }
     test {
