@@ -48,7 +48,7 @@
 				</thead>
 				<tbody>
 				<g:each in="${grupoInstanceList}" status="i" var="grupoInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					<tr style="background-color: #${grupoInstance.cor};text-decoration: underline;" class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${grupoInstance.id}">${fieldValue(bean: grupoInstance, field: "nome")}</g:link></td>
 					

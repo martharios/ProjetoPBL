@@ -20,7 +20,9 @@ class GrupoController {
     }
 
     def save() {
+		println "param: $params"
         def grupoInstance = new Grupo(params)
+		grupoInstance.cor = params['colorpickerField']
         if (!grupoInstance.save(flush: true)) {
             render(view: "create", model: [grupoInstance: grupoInstance])
             return
