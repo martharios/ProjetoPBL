@@ -10,8 +10,8 @@ class Curso {
     static hasMany = [alunos: Pessoa]
 
     static constraints = {
-        codigo(nullable: false,blank: false)
-        nome(nullable: false,blank: false)
+        codigo(nullable: false,blank: false, unique:true)
+        nome(nullable: false,blank: false, unique:true)
         descricao(nullable: false,blank: false)
         alunos(nullable: true,blank: true)
     }

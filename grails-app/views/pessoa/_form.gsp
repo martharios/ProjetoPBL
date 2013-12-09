@@ -64,6 +64,7 @@
     <div class="fieldcontain ${hasErrors(bean: pessoaInstance, field: 'perfilId', 'error')} required">
         <div class="formRight noSearch">
             <g:select class="chzn-select" name="perfilId" from="${br.edu.unime.util.Perfil.mapPerfil}" optionKey="key" optionValue="value" value="${fieldValue(bean: pessoaInstance, field: 'perfilId')}" valueMessagePrefix="pessoa.perfilId"/>
+            
         </div>
 
     </div>

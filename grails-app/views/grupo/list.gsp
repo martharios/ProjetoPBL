@@ -38,7 +38,7 @@
 					    
 					     <td>${message(code: 'grupo.nome.label', default: 'Nome')}</td>
 					
-                        <td>${message(code: 'grupo.cor.label', default: 'Cor')}</td>
+                    <!-- <td>${message(code: 'grupo.cor.label', default: 'Cor')}</td> -->
 					
                        
 					
@@ -52,7 +52,7 @@
 					
 						<td><g:link action="show" id="${grupoInstance.id}">${fieldValue(bean: grupoInstance, field: "nome")}</g:link></td>
 					
-						<td>${fieldValue(bean: grupoInstance, field: "cor")}</td>
+					<!--	<td>${fieldValue(bean: grupoInstance, field: "cor")}</td> -->
 					
                         <td align="center"><g:link action="edit" id="${grupoInstance.id}"><img src="${createLinkTo(dir: 'images/icons/middlenav', file: 'pencil.png')}" style="width: 15px;height: 15px;" /></g:link></td>
                         <td align="center"><div id="auxDiv${grupoInstance.id}"></div><a href="#auxDiv${grupoInstance.id}" onclick="jConfirm('Tem certeza que deseja excluir este(a) ${message(code: 'grupo.label', default: 'Artefact > Grupo')}?', 'Confirmação', function(e){if(e){
